@@ -89,7 +89,7 @@ const appInitProps = {
       title: 'Midnight Special',
       imageUrl: 'public/img/midnight-special.jpg'
     }]
-} as const;
+};
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
