@@ -3,7 +3,7 @@ import {FilmCard} from '../../components/film-card/film-card';
 import './main.css';
 import {Logo} from '../../components/logo/logo';
 import {UserBlock} from '../../components/user-block/user-block';
-import React from 'react';
+
 
 type MainProps = {
   currentFilm: Film;

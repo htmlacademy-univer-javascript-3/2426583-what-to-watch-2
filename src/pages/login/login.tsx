@@ -1,5 +1,5 @@
 import {Logo} from '../../components/logo/logo';
-import React from 'react';
+
 
 export function Login(): JSX.Element {
   return (

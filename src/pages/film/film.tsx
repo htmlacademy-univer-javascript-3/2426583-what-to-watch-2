@@ -3,7 +3,6 @@ import {FilmCard} from '../../components/film-card/film-card';
 import './film.css';
 import {Logo} from '../../components/logo/logo';
 import {UserBlock} from '../../components/user-block/user-block';
-import React from 'react';
 
 type MyFilmProps = {
   films: ShortFilmInfo[];

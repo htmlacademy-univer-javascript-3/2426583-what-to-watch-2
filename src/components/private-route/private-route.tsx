@@ -1,5 +1,4 @@
 import {Navigate} from 'react-router-dom';
-import React from 'react';
 import {AppRoute} from '../../const';
 
 type PrivateRouteProps = {

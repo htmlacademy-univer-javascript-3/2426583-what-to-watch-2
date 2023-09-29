@@ -1,7 +1,6 @@
 import {Film, ShortFilmInfo} from '../../models/models';
 import {Main} from '../../pages/main/main';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import React from 'react';
 import Layout from '../layout/layout';
 import {MyList} from '../../pages/my-list/my-list';
 import {Login} from '../../pages/login/login';

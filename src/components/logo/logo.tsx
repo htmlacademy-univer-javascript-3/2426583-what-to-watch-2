@@ -1,5 +1,4 @@
 import {Link} from 'react-router-dom';
-import React from 'react';
 
 export function Logo(): JSX.Element {
   return (

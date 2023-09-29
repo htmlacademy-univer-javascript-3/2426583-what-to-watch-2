@@ -2,7 +2,7 @@ import {ShortFilmInfo} from '../../models/models';
 import {FilmCard} from '../../components/film-card/film-card';
 import {Logo} from '../../components/logo/logo';
 import {UserBlock} from '../../components/user-block/user-block';
-import React from 'react';
+
 
 type MyListProps = {
   films: ShortFilmInfo[];

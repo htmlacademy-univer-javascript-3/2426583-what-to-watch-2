@@ -1,6 +1,5 @@
 import {Link} from 'react-router-dom';
-import React from 'react';
-import './not-found.css'
+import './not-found.css';
 
 export function NotFound(): JSX.Element {
   return (
@@ -10,7 +9,7 @@ export function NotFound(): JSX.Element {
         <br/>
         <small>Page not found</small>
         <br/>
-        <Link to='/' class='page-link'>Go to main page</Link>
+        <Link to='/' className='page-link'>Go to main page</Link>
       </h1>
     </div>
   );

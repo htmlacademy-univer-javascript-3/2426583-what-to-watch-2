@@ -1,7 +1,6 @@
 import './add-review.css';
 import {UserBlock} from '../../components/user-block/user-block';
 import {Logo} from '../../components/logo/logo';
-import React from 'react';
 const RATING_VALUES = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 
 export function AddReview(): JSX.Element {
