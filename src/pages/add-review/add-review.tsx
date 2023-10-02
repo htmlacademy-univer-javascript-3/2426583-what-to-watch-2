@@ -40,7 +40,7 @@ export function AddReview(): JSX.Element {
           <div className='rating'>
             <div className='rating__stars'>
               {
-                RATING_VALUES.map((rating: number) => <><input className='rating__input' id='star-1' type='radio' name='rating' value={rating}/><label className='rating__label' htmlFor='star-1'>Rating {rating}</label></>)
+                RATING_VALUES.map((rating: number) => <><input className='rating__input' id={`star-${rating}`} type='radio' name='rating' value={rating}/><label className='rating__label' htmlFor={`star-${rating}`}>Rating {rating}</label></>)
               };
             </div>
           </div>

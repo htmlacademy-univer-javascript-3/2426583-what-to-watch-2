@@ -1,6 +1,6 @@
 import {Film, ShortFilmInfo} from '../../models/models';
 import {Main} from '../../pages/main/main';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Layout from '../layout/layout';
 import {MyList} from '../../pages/my-list/my-list';
 import {Login} from '../../pages/login/login';
@@ -9,7 +9,7 @@ import {Player} from '../../pages/player/player';
 import {AppRoute} from '../../const';
 import {FilmPage} from '../../pages/film/film';
 import {NotFound} from '../../pages/not-found/not-found';
-import PrivateRoute from '../private-route/private-route';
+import ProtectedRoute from '../private-route/protected-route';
 
 type AppProps = {
   currentFilm: Film;
@@ -23,12 +23,12 @@ export default function App({currentFilm, films}: AppProps): JSX.Element {
         <Route path={AppRoute.Main} element={<Layout/>}>
           <Route index element={<Main currentFilm={currentFilm} films={films}/>}/>
           <Route path={AppRoute.Login} element={<Login/>}/>
-          <Route path={AppRoute.MyList} element={<PrivateRoute><MyList films={films}/></PrivateRoute>}/>
+          <Route path={AppRoute.MyList} element={<ProtectedRoute restrictedFor={} redirectTo={AppRoute.Login}><MyList films={films}/></ProtectedRoute>}/>
           <Route path={AppRoute.Film}>
             <Route path=':id' element={<FilmPage films={films}/>}/>
-            <Route path=':id/review' element={<AddReview/>}/>
+            <Route path={`:id/${AppRoute.Film}`} element={<AddReview/>}/>
           </Route>
-          <Route path='player/:id' element={<Player/>}/>
+          <Route path={`${AppRoute.Player}/:id`} element={<Player/>}/>
         </Route>
         <Route path='*' element={<NotFound/>}/>
       </Routes>
