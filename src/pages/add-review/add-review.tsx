@@ -25,7 +25,7 @@ export function AddReview(): JSX.Element {
                 <Link to='/' className='breadcrumbs__link'>The Grand Budapest Hotel</Link>
               </li>
               <li className='breadcrumbs__item'>
-                <Link className='breadcrumbs__link'>Add review</Link>
+                <Link className='breadcrumbs__link' to='/'>Add review</Link>
               </li>
             </ul>
           </nav>
