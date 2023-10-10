@@ -18,6 +18,6 @@
   font-weight: 300;
 }
 
-.page-link {
-  font-size: 20px !important;
+.page-link[class] {
+  font-size: 20px;
 }

@@ -26,7 +26,7 @@ export default function App({currentFilm, films}: AppProps): JSX.Element {
           <Route path={AppRoute.MyList} element={<ProtectedRoute restrictedFor={AuthorizationStatus.NoAuth} redirectTo={AppRoute.Login}><MyList films={films}/></ProtectedRoute>}/>
           <Route path={AppRoute.Film}>
             <Route path=':id' element={<FilmPage films={films}/>}/>
-            <Route path={`:id/${AppRoute.Film}`} element={<AddReview/>}/>
+            <Route path={`:id${AppRoute.AddReview}`} element={<AddReview/>}/>
           </Route>
           <Route path={`${AppRoute.Player}/:id`} element={<Player/>}/>
         </Route>

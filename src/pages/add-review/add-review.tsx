@@ -1,6 +1,9 @@
 import './add-review.css';
 import {UserBlock} from '../../components/user-block/user-block';
 import {Logo} from '../../components/logo/logo';
+import {Link} from 'react-router-dom';
+import React from 'react';
+
 const RATING_VALUES = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 
 export function AddReview(): JSX.Element {
@@ -19,10 +22,10 @@ export function AddReview(): JSX.Element {
           <nav className='breadcrumbs'>
             <ul className='breadcrumbs__list'>
               <li className='breadcrumbs__item'>
-                <a href='/' className='breadcrumbs__link'>The Grand Budapest Hotel</a>
+                <Link to='/' className='breadcrumbs__link'>The Grand Budapest Hotel</Link>
               </li>
               <li className='breadcrumbs__item'>
-                <a className='breadcrumbs__link'>Add review</a>
+                <Link className='breadcrumbs__link'>Add review</Link>
               </li>
             </ul>
           </nav>
@@ -40,7 +43,7 @@ export function AddReview(): JSX.Element {
           <div className='rating'>
             <div className='rating__stars'>
               {
-                RATING_VALUES.map((rating: number) => <><input className='rating__input' id={`star-${rating}`} type='radio' name='rating' value={rating}/><label className='rating__label' htmlFor={`star-${rating}`}>Rating {rating}</label></>)
+                RATING_VALUES.map((rating: number) => <React.Fragment key={rating}><input className='rating__input' id={`star-${rating}`} type='radio' name='rating' value={rating}/><label className='rating__label' htmlFor={`star-${rating}`}>Rating {rating}</label></React.Fragment>)
               };
             </div>
           </div>

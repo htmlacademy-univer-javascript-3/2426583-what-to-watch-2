@@ -3,12 +3,13 @@ import {FilmCard} from '../../components/film-card/film-card';
 import './film.css';
 import {Logo} from '../../components/logo/logo';
 import {UserBlock} from '../../components/user-block/user-block';
+import {Link} from 'react-router-dom';
 
-type MyFilmProps = {
+type FilmPageProps = {
   films: ShortFilmInfo[];
 }
 
-export function FilmPage({films}: MyFilmProps): JSX.Element {
+export function FilmPage({films}: FilmPageProps): JSX.Element {
   return (
     <>
       <section className='film-card film-card--full'>
@@ -46,7 +47,7 @@ export function FilmPage({films}: MyFilmProps): JSX.Element {
                   <span>My list</span>
                   <span className='film-card__count'>9</span>
                 </button>
-                <a href='/' className='btn film-card__button'>Add review</a>
+                <Link to='/' className='btn film-card__button'>Add review</Link>
               </div>
             </div>
           </div>
@@ -62,13 +63,13 @@ export function FilmPage({films}: MyFilmProps): JSX.Element {
               <nav className='film-nav film-card__nav'>
                 <ul className='film-nav__list'>
                   <li className='film-nav__item film-nav__item--active'>
-                    <a href='/' className='film-nav__link'>Overview</a>
+                    <Link to='/' className='film-nav__link'>Overview</Link>
                   </li>
                   <li className='film-nav__item'>
-                    <a href='/' className='film-nav__link'>Details</a>
+                    <Link to='/' className='film-nav__link'>Details</Link>
                   </li>
                   <li className='film-nav__item'>
-                    <a href='/' className='film-nav__link'>Reviews</a>
+                    <Link to='/' className='film-nav__link'>Reviews</Link>
                   </li>
                 </ul>
               </nav>
