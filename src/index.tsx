@@ -1,6 +1,6 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
+import React from 'react';
 
 const appInitProps = {
   currentFilm: {
@@ -89,7 +89,7 @@ const appInitProps = {
       title: 'Midnight Special',
       imageUrl: 'public/img/midnight-special.jpg'
     }]
-} as const;
+};
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
