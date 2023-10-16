@@ -5,7 +5,6 @@ import {Logo} from '../../components/logo/logo';
 import {UserBlock} from '../../components/user-block/user-block';
 import {Link, Navigate, useParams} from 'react-router-dom';
 import {AppRoute} from '../../const';
-import React from 'react';
 
 type FilmPageProps = {
   films: Film[];

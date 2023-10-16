@@ -2,7 +2,6 @@ import './add-review.css';
 import {UserBlock} from '../../components/user-block/user-block';
 import {Logo} from '../../components/logo/logo';
 import {Link, Navigate, useParams} from 'react-router-dom';
-import React from 'react';
 import {Film, Review} from '../../models/models';
 import {AppRoute} from '../../const';
 import {ReviewForm} from '../../components/review-form/review-form';

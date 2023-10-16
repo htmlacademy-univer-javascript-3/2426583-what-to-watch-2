@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FormEvent, Fragment, useState} from 'react';
+import {ChangeEvent, FormEvent, Fragment, useState} from 'react';
 import {Review} from '../../models/models';
 
 const RATING_VALUES = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
