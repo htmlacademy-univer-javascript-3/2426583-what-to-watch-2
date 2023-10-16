@@ -1,22 +1,22 @@
-import {Film, ShortFilmInfo} from '../../models/models';
-import {FilmCard} from '../../components/film-card/film-card';
+import {Film} from '../../models/models';
 import './main.css';
 import {Logo} from '../../components/logo/logo';
 import {UserBlock} from '../../components/user-block/user-block';
 import {Link} from 'react-router-dom';
+import {FilmsList} from '../../components/films-list/films-list';
 
 
 type MainProps = {
-  currentFilm: Film;
-  films: ShortFilmInfo[];
+  films: Film[];
 }
 
-export function Main({currentFilm, films}: MainProps): JSX.Element {
+export function Main({films}: MainProps): JSX.Element {
+  const [firstFilm] = films;
   return (
     <div>
       <section className='film-card'>
         <div className='film-card__bg'>
-          <img src='../../../public/img/bg-the-grand-budapest-hotel.jpg' alt='The Grand Budapest Hotel'/>
+          <img src={firstFilm.imageUrl} alt={firstFilm.title}/>
         </div>
 
         <h1 className='visually-hidden'>WTW</h1>
@@ -29,14 +29,14 @@ export function Main({currentFilm, films}: MainProps): JSX.Element {
         <div className='film-card__wrap'>
           <div className='film-card__info'>
             <div className='film-card__poster'>
-              <img src='../../../public/img/the-grand-budapest-hotel-poster.jpg' alt='The Grand Budapest Hotel poster'/>
+              <img src={firstFilm.imageUrl} alt={firstFilm.title}/>
             </div>
 
             <div className='film-card__desc'>
-              <h2 className='film-card__title'>{currentFilm.title}</h2>
+              <h2 className='film-card__title'>{firstFilm.title}</h2>
               <p className='film-card__meta'>
-                <span className='film-card__genre'>{currentFilm.genre}</span>
-                <span className='film-card__year'>{currentFilm.year}</span>
+                <span className='film-card__genre'>{firstFilm.genre}</span>
+                <span className='film-card__year'>{firstFilm.year}</span>
               </p>
 
               <div className='film-card__buttons'>
@@ -51,7 +51,7 @@ export function Main({currentFilm, films}: MainProps): JSX.Element {
                     <use xlinkHref='#add'/>
                   </svg>
                   <span>My list</span>
-                  <span className='film-card__count'>9</span>
+                  <span className='film-card__count'>{films.length}</span>
                 </button>
               </div>
             </div>
@@ -96,11 +96,7 @@ export function Main({currentFilm, films}: MainProps): JSX.Element {
             </li>
           </ul>
 
-          <div className='catalog__films-list'>
-            {
-              films.map((shortFilmInfo: ShortFilmInfo) => <FilmCard key={shortFilmInfo.title} shortFilmInfo={shortFilmInfo}/>)
-            }
-          </div>
+          <FilmsList films={films}/>
 
           <div className='catalog__more'>
             <button className='catalog__button' type='button'>Show more</button>

@@ -1,9 +1,10 @@
-import {ShortFilmInfo} from '../../models/models';
+import {Film} from '../../models/models';
 import './film-card.css';
 import {Link} from 'react-router-dom';
+import {AppRoute} from '../../const';
 
 type FilmCardProps = {
-  shortFilmInfo: ShortFilmInfo;
+  shortFilmInfo: Film;
 }
 
 export function FilmCard({shortFilmInfo}: FilmCardProps): JSX.Element {
@@ -13,7 +14,7 @@ export function FilmCard({shortFilmInfo}: FilmCardProps): JSX.Element {
         <img src={shortFilmInfo.imageUrl} alt={shortFilmInfo.title} />
       </div>
       <h3 className="small-film-card__title">
-        <Link className="small-film-card__link" to="/">{shortFilmInfo.title}</Link>
+        <Link className="small-film-card__link" to={`${AppRoute.Film}/${shortFilmInfo.id}`}>{shortFilmInfo.title}</Link>
       </h3>
     </article>
   );
