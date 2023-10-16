@@ -1,90 +1,57 @@
+import './add-review.css';
+import {UserBlock} from '../../components/user-block/user-block';
+import {Logo} from '../../components/logo/logo';
+import {Link} from 'react-router-dom';
+import React from 'react';
+
+const RATING_VALUES = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+
 export function AddReview(): JSX.Element {
   return (
-    <section className="film-card film-card--full">
-      <div className="film-card__header">
-        <div className="film-card__bg">
-          <img src="public/img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel"/>
+    <section className='film-card film-card--full'>
+      <div className='film-card__header'>
+        <div className='film-card__bg'>
+          <img src='../../../public/img/bg-the-grand-budapest-hotel.jpg' alt='The Grand Budapest Hotel'/>
         </div>
 
-        <h1 className="visually-hidden">WTW</h1>
+        <h1 className='visually-hidden'>WTW</h1>
 
-        <header className="page-header">
-          <div className="logo">
-            <a href="main.html" className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
+        <header className='page-header'>
+          <Logo/>
 
-          <nav className="breadcrumbs">
-            <ul className="breadcrumbs__list">
-              <li className="breadcrumbs__item">
-                <a href="film-page.html" className="breadcrumbs__link">The Grand Budapest Hotel</a>
+          <nav className='breadcrumbs'>
+            <ul className='breadcrumbs__list'>
+              <li className='breadcrumbs__item'>
+                <Link to='/' className='breadcrumbs__link'>The Grand Budapest Hotel</Link>
               </li>
-              <li className="breadcrumbs__item">
-                <a className="breadcrumbs__link">Add review</a>
+              <li className='breadcrumbs__item'>
+                <Link className='breadcrumbs__link' to='/'>Add review</Link>
               </li>
             </ul>
           </nav>
 
-          <ul className="user-block">
-            <li className="user-block__item">
-              <div className="user-block__avatar">
-                <img src="public/img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-              </div>
-            </li>
-            <li className="user-block__item">
-              <a className="user-block__link">Sign out</a>
-            </li>
-          </ul>
+          <UserBlock/>
         </header>
 
-        <div className="film-card__poster film-card__poster--small">
-          <img src="public/img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327"/>
+        <div className='film-card__poster film-card__poster--small'>
+          <img src='../../../public/img/the-grand-budapest-hotel-poster.jpg' alt='The Grand Budapest Hotel poster'/>
         </div>
       </div>
 
-      <div className="add-review">
-        <form action="#" className="add-review__form">
-          <div className="rating">
-            <div className="rating__stars">
-              <input className="rating__input" id="star-10" type="radio" name="rating" value="10"/>
-              <label className="rating__label" htmlFor="star-10">Rating 10</label>
-
-              <input className="rating__input" id="star-9" type="radio" name="rating" value="9"/>
-              <label className="rating__label" htmlFor="star-9">Rating 9</label>
-
-              <input className="rating__input" id="star-8" type="radio" name="rating" value="8" checked/>
-              <label className="rating__label" htmlFor="star-8">Rating 8</label>
-
-              <input className="rating__input" id="star-7" type="radio" name="rating" value="7"/>
-              <label className="rating__label" htmlFor="star-7">Rating 7</label>
-
-              <input className="rating__input" id="star-6" type="radio" name="rating" value="6"/>
-              <label className="rating__label" htmlFor="star-6">Rating 6</label>
-
-              <input className="rating__input" id="star-5" type="radio" name="rating" value="5"/>
-              <label className="rating__label" htmlFor="star-5">Rating 5</label>
-
-              <input className="rating__input" id="star-4" type="radio" name="rating" value="4"/>
-              <label className="rating__label" htmlFor="star-4">Rating 4</label>
-
-              <input className="rating__input" id="star-3" type="radio" name="rating" value="3"/>
-              <label className="rating__label" htmlFor="star-3">Rating 3</label>
-
-              <input className="rating__input" id="star-2" type="radio" name="rating" value="2"/>
-              <label className="rating__label" htmlFor="star-2">Rating 2</label>
-
-              <input className="rating__input" id="star-1" type="radio" name="rating" value="1"/>
-              <label className="rating__label" htmlFor="star-1">Rating 1</label>
+      <div className='add-review'>
+        <form action='#' className='add-review__form'>
+          <div className='rating'>
+            <div className='rating__stars'>
+              {
+                RATING_VALUES.map((rating: number) => <React.Fragment key={rating}><input className='rating__input' id={`star-${rating}`} type='radio' name='rating' value={rating}/><label className='rating__label' htmlFor={`star-${rating}`}>Rating {rating}</label></React.Fragment>)
+              };
             </div>
           </div>
 
-          <div className="add-review__text">
-            <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text"></textarea>
-            <div className="add-review__submit">
-              <button className="add-review__btn" type="submit">Post</button>
+          <div className='add-review__text'>
+            <textarea className='add-review__textarea' name='review-text' id='review-text' placeholder='Review text'/>
+            <div className='add-review__submit'>
+              <button className='add-review__btn' type='submit'>Post</button>
             </div>
 
           </div>
