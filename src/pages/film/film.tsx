@@ -5,21 +5,18 @@ import {Logo} from '../../components/logo/logo';
 import {UserBlock} from '../../components/user-block/user-block';
 import {Link, Navigate, useParams} from 'react-router-dom';
 import {AppRoute} from '../../const';
+import {useFilm} from '../../hooks/use-film-hook';
 
 type FilmPageProps = {
   films: Film[];
 }
 
 export function FilmPage({films}: FilmPageProps): JSX.Element {
-  const params = useParams();
-  const id = params.id ? Number(params.id) : -1;
+  const [film, id] = useFilm(films);
 
-  const filteredFilms = films.filter((x) => x.id === Number(id));
-  if (filteredFilms.length === 0) {
-    return <Navigate to={`/${AppRoute.NotFound}`} />;
+  if (!film) {
+    return <Navigate to={`${AppRoute.NotFound}`} />;
   }
-
-  const film = filteredFilms[0];
 
   return (
     <>

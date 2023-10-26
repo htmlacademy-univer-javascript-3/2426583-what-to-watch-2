@@ -6,30 +6,28 @@ import {Film, Review} from '../../models/models';
 import {AppRoute} from '../../const';
 import {ReviewForm} from '../../components/review-form/review-form';
 import {useState} from 'react';
+import {useFilm} from '../../hooks/use-film-hook';
 
 
 type AddReviewProps = {
   films: Film[];
 }
 
+const defaultReview: Review = {
+  id: 0,
+  text: '',
+  author: 'Matthew Lickona',
+  date: new Date(),
+  rating: 7.2
+};
+
 export function AddReview({films}: AddReviewProps): JSX.Element {
-  const [review, setReview] = useState({
-    id: 0,
-    text: '',
-    author: 'Matthew Lickona',
-    date: new Date(),
-    rating: 7.2
-  });
+  const [review, setReview] = useState(defaultReview);
+  const [film, id] = useFilm(films);
 
-  const params = useParams();
-  const id = params.id ? Number(params.id) : -1;
-
-  const filteredFilms = films.filter((x) => x.id === Number(id));
-  if (filteredFilms.length === 0) {
-    return <Navigate to={`/${AppRoute.NotFound}`} />;
+  if (!film) {
+    return <Navigate to={`${AppRoute.NotFound}`} />;
   }
-
-  const film = filteredFilms[0];
 
   return (
     <section className='film-card film-card--full'>

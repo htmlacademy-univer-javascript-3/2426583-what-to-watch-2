@@ -3,18 +3,20 @@ import {Review} from '../../models/models';
 
 const RATING_VALUES = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 
+const defaultReview: Review = {
+  id: 0,
+  text: '',
+  author: 'Matthew Lickona',
+  date: new Date(),
+  rating: 7.2
+};
+
 type ReviewFormProps = {
   onSend: (review: Review) => void;
 }
 
 export function ReviewForm({onSend}: ReviewFormProps): JSX.Element {
-  const [review, setReview] = useState({
-    id: 0,
-    text: '',
-    author: 'Matthew Lickona',
-    date: new Date(),
-    rating: 7.2
-  });
+  const [review, setReview] = useState(defaultReview);
 
   function handleRatingChange(evt: ChangeEvent<HTMLInputElement>) {
     setReview({
