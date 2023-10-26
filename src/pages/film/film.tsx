@@ -3,7 +3,7 @@ import {FilmCard} from '../../components/film-card/film-card';
 import './film.css';
 import {Logo} from '../../components/logo/logo';
 import {UserBlock} from '../../components/user-block/user-block';
-import {Link, Navigate, useParams} from 'react-router-dom';
+import {Link, Navigate} from 'react-router-dom';
 import {AppRoute} from '../../const';
 import {useFilm} from '../../hooks/use-film-hook';
 
@@ -12,7 +12,7 @@ type FilmPageProps = {
 }
 
 export function FilmPage({films}: FilmPageProps): JSX.Element {
-  const [film, id] = useFilm(films);
+  const film = useFilm(films);
 
   if (!film) {
     return <Navigate to={`${AppRoute.NotFound}`} />;
@@ -55,7 +55,7 @@ export function FilmPage({films}: FilmPageProps): JSX.Element {
                   <span>My list</span>
                   <span className='film-card__count'>9</span>
                 </button>
-                <Link to={`${AppRoute.Film}/${id}${AppRoute.AddReview}`} className='btn film-card__button'>Add review</Link>
+                <Link to={`${AppRoute.Film}/${film.id}${AppRoute.AddReview}`} className='btn film-card__button'>Add review</Link>
               </div>
             </div>
           </div>

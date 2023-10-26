@@ -1,7 +1,7 @@
 import './add-review.css';
 import {UserBlock} from '../../components/user-block/user-block';
 import {Logo} from '../../components/logo/logo';
-import {Link, Navigate, useParams} from 'react-router-dom';
+import {Link, Navigate} from 'react-router-dom';
 import {Film, Review} from '../../models/models';
 import {AppRoute} from '../../const';
 import {ReviewForm} from '../../components/review-form/review-form';
@@ -23,7 +23,7 @@ const defaultReview: Review = {
 
 export function AddReview({films}: AddReviewProps): JSX.Element {
   const [review, setReview] = useState(defaultReview);
-  const [film, id] = useFilm(films);
+  const film = useFilm(films);
 
   if (!film) {
     return <Navigate to={`${AppRoute.NotFound}`} />;
