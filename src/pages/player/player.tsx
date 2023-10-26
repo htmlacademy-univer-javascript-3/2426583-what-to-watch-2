@@ -1,7 +1,24 @@
-export function Player(): JSX.Element {
+import {Navigate, useParams} from 'react-router-dom';
+import {Film} from '../../models/models';
+import {AppRoute} from '../../const';
+
+type PlayerProps = {
+  films: Film[];
+}
+export function Player({films}: PlayerProps): JSX.Element {
+  const params = useParams();
+  const id = params.id ? Number(params.id) : -1;
+
+  const filteredFilms = films.filter((x) => x.id === Number(id));
+  if (filteredFilms.length === 0) {
+    return <Navigate to={`/${AppRoute.NotFound}`} />;
+  }
+
+  const film = filteredFilms[0];
+
   return (
     <div className="player">
-      <video src="#" className="player__video" poster="../../../public/img/player-poster.jpg"/>
+      <video src={film.videoUrl} className="player__video" poster={film.imageUrl}/>
 
       <button type="button" className="player__exit">Exit</button>
 

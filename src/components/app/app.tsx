@@ -1,4 +1,4 @@
-import {Film, ShortFilmInfo} from '../../models/models';
+import {Film} from '../../models/models';
 import {Main} from '../../pages/main/main';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Layout from '../layout/layout';
@@ -12,23 +12,22 @@ import {NotFound} from '../../pages/not-found/not-found';
 import ProtectedRoute from '../private-route/protected-route';
 
 type AppProps = {
-  currentFilm: Film;
-  films: ShortFilmInfo[];
+  films: Film[];
 };
 
-export default function App({currentFilm, films}: AppProps): JSX.Element {
+export default function App({films}: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route path={AppRoute.Main} element={<Layout/>}>
-          <Route index element={<Main currentFilm={currentFilm} films={films}/>}/>
+          <Route index element={<Main films={films}/>}/>
           <Route path={AppRoute.Login} element={<Login/>}/>
-          <Route path={AppRoute.MyList} element={<ProtectedRoute restrictedFor={AuthorizationStatus.NoAuth} redirectTo={AppRoute.Login}><MyList films={films}/></ProtectedRoute>}/>
+          <Route path={AppRoute.MyList} element={<ProtectedRoute restrictedFor={AuthorizationStatus.Auth} redirectTo={AppRoute.Login}><MyList films={films}/></ProtectedRoute>}/>
           <Route path={AppRoute.Film}>
             <Route path=':id' element={<FilmPage films={films}/>}/>
-            <Route path={`:id${AppRoute.AddReview}`} element={<AddReview/>}/>
+            <Route path={`:id${AppRoute.AddReview}`} element={<AddReview films={films}/>}/>
           </Route>
-          <Route path={`${AppRoute.Player}/:id`} element={<Player/>}/>
+          <Route path={`${AppRoute.Player}/:id`} element={<Player films={films}/>}/>
         </Route>
         <Route path='*' element={<NotFound/>}/>
       </Routes>

@@ -1,17 +1,39 @@
 import './add-review.css';
 import {UserBlock} from '../../components/user-block/user-block';
 import {Logo} from '../../components/logo/logo';
-import {Link} from 'react-router-dom';
-import React from 'react';
+import {Link, Navigate} from 'react-router-dom';
+import {Film, Review} from '../../models/models';
+import {AppRoute} from '../../const';
+import {ReviewForm} from '../../components/review-form/review-form';
+import {useState} from 'react';
+import {useFilm} from '../../hooks/use-film-hook';
 
-const RATING_VALUES = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 
-export function AddReview(): JSX.Element {
+type AddReviewProps = {
+  films: Film[];
+}
+
+const defaultReview: Review = {
+  id: 0,
+  text: '',
+  author: 'Matthew Lickona',
+  date: new Date(),
+  rating: 7.2
+};
+
+export function AddReview({films}: AddReviewProps): JSX.Element {
+  const [review, setReview] = useState(defaultReview);
+  const film = useFilm(films);
+
+  if (!film) {
+    return <Navigate to={`${AppRoute.NotFound}`} />;
+  }
+
   return (
     <section className='film-card film-card--full'>
       <div className='film-card__header'>
         <div className='film-card__bg'>
-          <img src='../../../public/img/bg-the-grand-budapest-hotel.jpg' alt='The Grand Budapest Hotel'/>
+          <img src={film.imageUrl} alt={film.title}/>
         </div>
 
         <h1 className='visually-hidden'>WTW</h1>
@@ -22,10 +44,10 @@ export function AddReview(): JSX.Element {
           <nav className='breadcrumbs'>
             <ul className='breadcrumbs__list'>
               <li className='breadcrumbs__item'>
-                <Link to='/' className='breadcrumbs__link'>The Grand Budapest Hotel</Link>
+                <Link to={`${AppRoute.Film}/${film.id}`} className='breadcrumbs__link'>{film.title}</Link>
               </li>
               <li className='breadcrumbs__item'>
-                <Link className='breadcrumbs__link' to='/'>Add review</Link>
+                <Link className='breadcrumbs__link' to={`${AppRoute.Film}/${film.id}${AppRoute.AddReview}`}>Add review</Link>
               </li>
             </ul>
           </nav>
@@ -34,29 +56,11 @@ export function AddReview(): JSX.Element {
         </header>
 
         <div className='film-card__poster film-card__poster--small'>
-          <img src='../../../public/img/the-grand-budapest-hotel-poster.jpg' alt='The Grand Budapest Hotel poster'/>
+          <img src={film.imageUrl} alt={film.title}/>
         </div>
       </div>
 
-      <div className='add-review'>
-        <form action='#' className='add-review__form'>
-          <div className='rating'>
-            <div className='rating__stars'>
-              {
-                RATING_VALUES.map((rating: number) => <React.Fragment key={rating}><input className='rating__input' id={`star-${rating}`} type='radio' name='rating' value={rating}/><label className='rating__label' htmlFor={`star-${rating}`}>Rating {rating}</label></React.Fragment>)
-              };
-            </div>
-          </div>
-
-          <div className='add-review__text'>
-            <textarea className='add-review__textarea' name='review-text' id='review-text' placeholder='Review text'/>
-            <div className='add-review__submit'>
-              <button className='add-review__btn' type='submit'>Post</button>
-            </div>
-
-          </div>
-        </form>
-      </div>
+      <ReviewForm onSend={(newReview: Review) => setReview(newReview)}></ReviewForm>
     </section>
   );
 }
