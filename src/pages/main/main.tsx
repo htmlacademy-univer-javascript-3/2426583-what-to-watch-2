@@ -16,7 +16,7 @@ export function Main({films}: MainProps): JSX.Element {
     <div>
       <section className='film-card'>
         <div className='film-card__bg'>
-          <img src={firstFilm.imageUrl} alt={firstFilm.title}/>
+          <img src={firstFilm.imageSrc} alt={firstFilm.title}/>
         </div>
 
         <h1 className='visually-hidden'>WTW</h1>
@@ -29,7 +29,7 @@ export function Main({films}: MainProps): JSX.Element {
         <div className='film-card__wrap'>
           <div className='film-card__info'>
             <div className='film-card__poster'>
-              <img src={firstFilm.imageUrl} alt={firstFilm.title}/>
+              <img src={firstFilm.imageSrc} alt={firstFilm.title}/>
             </div>
 
             <div className='film-card__desc'>

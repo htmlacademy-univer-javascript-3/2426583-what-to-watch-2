@@ -33,7 +33,7 @@ export function AddReview({films}: AddReviewProps): JSX.Element {
     <section className='film-card film-card--full'>
       <div className='film-card__header'>
         <div className='film-card__bg'>
-          <img src={film.imageUrl} alt={film.title}/>
+          <img src={film.imageSrc} alt={film.title}/>
         </div>
 
         <h1 className='visually-hidden'>WTW</h1>
@@ -56,7 +56,7 @@ export function AddReview({films}: AddReviewProps): JSX.Element {
         </header>
 
         <div className='film-card__poster film-card__poster--small'>
-          <img src={film.imageUrl} alt={film.title}/>
+          <img src={film.imageSrc} alt={film.title}/>
         </div>
       </div>
 

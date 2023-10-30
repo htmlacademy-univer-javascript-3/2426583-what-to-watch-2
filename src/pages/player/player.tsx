@@ -18,7 +18,7 @@ export function Player({films}: PlayerProps): JSX.Element {
 
   return (
     <div className="player">
-      <video src={film.videoUrl} className="player__video" poster={film.imageUrl}/>
+      <video src={film.videoSrc} className="player__video" poster={film.imageSrc}/>
 
       <button type="button" className="player__exit">Exit</button>
 
