@@ -14,3 +14,9 @@ export const enum AuthorizationStatus {
   Unknown = 'UNKNOWN'
 }
 
+export const enum Tab {
+  details = 'Details',
+  overview = 'Overview',
+  reviews = 'Reviews'
+}
+

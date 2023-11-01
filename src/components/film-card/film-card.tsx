@@ -17,7 +17,8 @@ export function FilmCard({shortFilmInfo, onMouseEnter, onMouseLeave, isActive}: 
       <div
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
-        className="small-film-card__image">
+        className="small-film-card__image"
+      >
         {isActive && (
           <VideoPlayer
             src={shortFilmInfo.videoSrc}

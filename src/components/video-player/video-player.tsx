@@ -24,6 +24,7 @@ export function VideoPlayer({poster, src}: VideoPlayerProps): JSX.Element {
       poster={poster}
       src={src}
       muted
-      className="video-player"/>
+      className="video-player"
+    />
   );
 }

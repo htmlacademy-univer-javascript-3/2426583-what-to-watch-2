@@ -2,7 +2,7 @@ import './add-review.css';
 import {UserBlock} from '../../components/user-block/user-block';
 import {Logo} from '../../components/logo/logo';
 import {Link, Navigate} from 'react-router-dom';
-import {Film, Review} from '../../models/models';
+import {Film, UserReview} from '../../models/models';
 import {AppRoute} from '../../const';
 import {ReviewForm} from '../../components/review-form/review-form';
 import {useState} from 'react';
@@ -13,7 +13,7 @@ type AddReviewProps = {
   films: Film[];
 }
 
-const defaultReview: Review = {
+const defaultReview: UserReview = {
   id: 0,
   text: '',
   author: 'Matthew Lickona',
@@ -60,7 +60,7 @@ export function AddReview({films}: AddReviewProps): JSX.Element {
         </div>
       </div>
 
-      <ReviewForm onSend={(newReview: Review) => setReview(newReview)}></ReviewForm>
+      <ReviewForm onSend={(newReview: UserReview) => setReview(newReview)}></ReviewForm>
     </section>
   );
 }

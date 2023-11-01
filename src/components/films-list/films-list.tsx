@@ -21,14 +21,15 @@ export function FilmsList({films}: FilmsListProps): JSX.Element {
     <div className='catalog__films-list'>
 
       {
-        films.map((shortFilmInfo: Film) =>
-          (<FilmCard
+        films.map((shortFilmInfo: Film) => (
+          <FilmCard
             key={shortFilmInfo.id}
             shortFilmInfo={shortFilmInfo}
             onMouseEnter={() => handleMouseEnter(shortFilmInfo)}
             onMouseLeave={handleMouseLeave}
             isActive={shortFilmInfo.id === activeFilmId}
-          />))
+          />
+        ))
       }
 
     </div>
