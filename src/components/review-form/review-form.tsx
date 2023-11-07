@@ -1,9 +1,9 @@
 import {ChangeEvent, FormEvent, Fragment, useState} from 'react';
-import {Review} from '../../models/models';
+import {UserReview} from '../../models/models';
 
 const RATING_VALUES = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 
-const defaultReview: Review = {
+const defaultReview: UserReview = {
   id: 0,
   text: '',
   author: 'Matthew Lickona',
@@ -12,7 +12,7 @@ const defaultReview: Review = {
 };
 
 type ReviewFormProps = {
-  onSend: (review: Review) => void;
+  onSend: (review: UserReview) => void;
 }
 
 export function ReviewForm({onSend}: ReviewFormProps): JSX.Element {

@@ -1,18 +1,46 @@
 import {Film} from '../../models/models';
-import {FilmCard} from '../../components/film-card/film-card';
 import './film.css';
 import {Logo} from '../../components/logo/logo';
 import {UserBlock} from '../../components/user-block/user-block';
 import {Link, Navigate} from 'react-router-dom';
-import {AppRoute} from '../../const';
+import {AppRoute, Tab} from '../../const';
 import {useFilm} from '../../hooks/use-film-hook';
+import {useCallback, useEffect, useState} from 'react';
+import {Tabs} from '../../components/tabs/tabs';
+import {Overview} from '../../components/tabs/overview';
+import {Details} from '../../components/tabs/details';
+import {Reviews} from '../../components/tabs/reviews-tab/reviews';
+import {FilmsList} from '../../components/films-list/films-list';
+
+const getComponentBySelectedTab = (selectedTab: Tab, film: Film) => {
+  switch (selectedTab) {
+    case Tab.overview:
+      return <Overview film={film}></Overview>;
+    case Tab.details:
+      return <Details film={film}></Details>;
+    case Tab.reviews:
+      return <Reviews reviews={film.reviews}/>;
+  }
+};
 
 type FilmPageProps = {
   films: Film[];
 }
 
 export function FilmPage({films}: FilmPageProps): JSX.Element {
+  const [selectedTab, setSelectedTab] = useState(Tab.overview);
+  const [moreLikeThisFilms, setMoreLikeThisFilms] = useState([]);
+
+  const handleTabClick = useCallback((tab: Tab) => {
+    setSelectedTab(tab);
+  }, []);
+
   const film = useFilm(films);
+
+  useEffect(() => {
+    const sameGenreFilms = films.filter((filteredFilm: Film) => filteredFilm.genre === film?.genre).slice(0,4);
+    setMoreLikeThisFilms(sameGenreFilms);
+  }, [films, film]);
 
   if (!film) {
     return <Navigate to={`${AppRoute.NotFound}`} />;
@@ -68,34 +96,12 @@ export function FilmPage({films}: FilmPageProps): JSX.Element {
             </div>
 
             <div className='film-card__desc'>
-              <nav className='film-nav film-card__nav'>
-                <ul className='film-nav__list'>
-                  <li className='film-nav__item film-nav__item--active'>
-                    <Link to='/' className='film-nav__link'>Overview</Link>
-                  </li>
-                  <li className='film-nav__item'>
-                    <Link to='/' className='film-nav__link'>Details</Link>
-                  </li>
-                  <li className='film-nav__item'>
-                    <Link to='/' className='film-nav__link'>Reviews</Link>
-                  </li>
-                </ul>
-              </nav>
-
-              <div className='film-rating'>
-                <div className='film-rating__score'>{film.rating.score}</div>
-                <p className='film-rating__meta'>
-                  <span className='film-rating__level'>{film.rating.level}</span>
-                  <span className='film-rating__count'>{film.rating.count}</span>
-                </p>
-              </div>
-
-              <div className='film-card__text'>
-                <p>{film.description.info}</p>
-                <p className='film-card__director'><strong>Director: {film.description.director}</strong></p>
-
-                <p className='film-card__starring'><strong>Starring: {film.description.starring}</strong></p>
-              </div>
+              <Tabs
+                onTabSelected={(tab: Tab) => handleTabClick(tab)}
+                selectedTab={selectedTab}
+              >
+              </Tabs>
+              {getComponentBySelectedTab(selectedTab, film)}
             </div>
           </div>
         </div>
@@ -105,11 +111,7 @@ export function FilmPage({films}: FilmPageProps): JSX.Element {
         <section className='catalog catalog--like-this'>
           <h2 className='catalog__title'>More like this</h2>
 
-          <div className='catalog__films-list'>
-            {
-              films.map((shortFilmInfo: Film) => <FilmCard key={shortFilmInfo.title} shortFilmInfo={shortFilmInfo}/>)
-            }
-          </div>
+          <FilmsList films={moreLikeThisFilms}/>
         </section>
 
         <footer className='page-footer'>

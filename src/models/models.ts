@@ -10,9 +10,11 @@ export type Film = {
   imageSrc: string;
   videoSrc: string;
   genre: string;
+  runTime: number;
   year: number;
   rating: FilmRating;
   description: FilmDescription;
+  reviews: UserReview[];
 }
 
 export type FilmRating = {
@@ -24,10 +26,10 @@ export type FilmRating = {
 export type FilmDescription = {
   info: string;
   director: string;
-  starring: string;
+  starring: string[];
 }
 
-export type Review = {
+export type UserReview = {
   id: number;
   text: string;
   author: string;

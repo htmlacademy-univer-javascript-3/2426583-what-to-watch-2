@@ -1,4 +1,5 @@
 import {Film} from '../models/models';
+import {REVIEWS} from './reviews';
 
 export const FILMS: Film[] = [
   {
@@ -7,6 +8,7 @@ export const FILMS: Film[] = [
     imageSrc: '/img/fantastic-beasts-the-crimes-of-grindelwald.jpg',
     videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
+    runTime: 120,
     year: 2015,
     rating: {
       score: 7.0,
@@ -16,8 +18,9 @@ export const FILMS: Film[] = [
     description: {
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       director: 'David Yates',
-      starring: 'Eddie Redmayne, Katherine Waterston, Johnny Depp',
-    }
+      starring: ['Eddie Redmayne', 'Katherine Waterston', 'Johnny Depp']
+    },
+    reviews: REVIEWS
   },
   {
     id: 2,
@@ -25,7 +28,8 @@ export const FILMS: Film[] = [
     imageSrc: '/img/bohemian-rhapsody.jpg',
     videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
-    year: 2015,
+    runTime: 120,
+    year: 2016,
     rating: {
       score: 7.0,
       level: 'Very good',
@@ -34,8 +38,9 @@ export const FILMS: Film[] = [
     description: {
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       director: 'David Yates',
-      starring: 'Eddie Redmayne, Katherine Waterston, Johnny Depp',
-    }
+      starring: ['Eddie Redmayne', 'Katherine Waterston', 'Johnny Depp']
+    },
+    reviews: REVIEWS
   },
   {
     id: 3,
@@ -43,6 +48,7 @@ export const FILMS: Film[] = [
     imageSrc: '/img/macbeth.jpg',
     videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
+    runTime: 120,
     year: 2015,
     rating: {
       score: 7.0,
@@ -52,15 +58,17 @@ export const FILMS: Film[] = [
     description: {
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       director: 'David Yates',
-      starring: 'Eddie Redmayne, Katherine Waterston, Johnny Depp',
-    }
+      starring: ['Eddie Redmayne', 'Katherine Waterston', 'Johnny Depp']
+    },
+    reviews: REVIEWS
   },
   {
     id: 4,
     title: 'Aviator',
     imageSrc: '/img/aviator.jpg',
     videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
-    genre: 'Drama',
+    genre: 'Thriller',
+    runTime: 120,
     year: 2015,
     rating: {
       score: 7.0,
@@ -70,8 +78,9 @@ export const FILMS: Film[] = [
     description: {
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       director: 'David Yates',
-      starring: 'Eddie Redmayne, Katherine Waterston, Johnny Depp',
-    }
+      starring: ['Eddie Redmayne', 'Katherine Waterston', 'Johnny Depp']
+    },
+    reviews: REVIEWS
   },
   {
     id: 5,
@@ -79,6 +88,7 @@ export const FILMS: Film[] = [
     imageSrc: '/img/we-need-to-talk-about-kevin.jpg',
     videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
+    runTime: 120,
     year: 2015,
     rating: {
       score: 7.0,
@@ -88,8 +98,9 @@ export const FILMS: Film[] = [
     description: {
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       director: 'David Yates',
-      starring: 'Eddie Redmayne, Katherine Waterston, Johnny Depp',
-    }
+      starring: ['Eddie Redmayne', 'Katherine Waterston', 'Johnny Depp']
+    },
+    reviews: REVIEWS
   },
   {
     id: 6,
@@ -97,6 +108,7 @@ export const FILMS: Film[] = [
     imageSrc: '/img/what-we-do-in-the-shadows.jpg',
     videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
+    runTime: 120,
     year: 2015,
     rating: {
       score: 7.0,
@@ -106,8 +118,9 @@ export const FILMS: Film[] = [
     description: {
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       director: 'David Yates',
-      starring: 'Eddie Redmayne, Katherine Waterston, Johnny Depp',
-    }
+      starring: ['Eddie Redmayne', 'Katherine Waterston', 'Johnny Depp']
+    },
+    reviews: REVIEWS
   },
   {
     id: 7,
@@ -115,6 +128,7 @@ export const FILMS: Film[] = [
     imageSrc: '/img/revenant.jpg',
     videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
+    runTime: 120,
     year: 2015,
     rating: {
       score: 7.0,
@@ -124,8 +138,9 @@ export const FILMS: Film[] = [
     description: {
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       director: 'David Yates',
-      starring: 'Eddie Redmayne, Katherine Waterston, Johnny Depp',
-    }
+      starring: ['Eddie Redmayne', 'Katherine Waterston', 'Johnny Depp']
+    },
+    reviews: REVIEWS
   },
   {
     id: 8,
@@ -133,6 +148,7 @@ export const FILMS: Film[] = [
     imageSrc: '/img/johnny-english.jpg',
     videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
+    runTime: 120,
     year: 2015,
     rating: {
       score: 7.0,
@@ -142,8 +158,9 @@ export const FILMS: Film[] = [
     description: {
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       director: 'David Yates',
-      starring: 'Eddie Redmayne, Katherine Waterston, Johnny Depp',
-    }
+      starring: ['Eddie Redmayne', 'Katherine Waterston', 'Johnny Depp']
+    },
+    reviews: REVIEWS
   },
   {
     id: 9,
@@ -151,6 +168,7 @@ export const FILMS: Film[] = [
     imageSrc: '/img/shutter-island.jpg',
     videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
+    runTime: 120,
     year: 2015,
     rating: {
       score: 7.0,
@@ -160,8 +178,9 @@ export const FILMS: Film[] = [
     description: {
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       director: 'David Yates',
-      starring: 'Eddie Redmayne, Katherine Waterston, Johnny Depp',
-    }
+      starring: ['Eddie Redmayne', 'Katherine Waterston', 'Johnny Depp']
+    },
+    reviews: REVIEWS
   },
   {
     id: 10,
@@ -169,6 +188,7 @@ export const FILMS: Film[] = [
     imageSrc: '/img/pulp-fiction.jpg',
     videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
+    runTime: 120,
     year: 2015,
     rating: {
       score: 7.0,
@@ -178,8 +198,9 @@ export const FILMS: Film[] = [
     description: {
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       director: 'David Yates',
-      starring: 'Eddie Redmayne, Katherine Waterston, Johnny Depp',
-    }
+      starring: ['Eddie Redmayne', 'Katherine Waterston', 'Johnny Depp']
+    },
+    reviews: REVIEWS
   },
   {
     id: 11,
@@ -187,6 +208,7 @@ export const FILMS: Film[] = [
     imageSrc: '/img/no-country-for-old-men.jpg',
     videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
+    runTime: 120,
     year: 2015,
     rating: {
       score: 7.0,
@@ -196,8 +218,9 @@ export const FILMS: Film[] = [
     description: {
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       director: 'David Yates',
-      starring: 'Eddie Redmayne, Katherine Waterston, Johnny Depp',
-    }
+      starring: ['Eddie Redmayne', 'Katherine Waterston', 'Johnny Depp']
+    },
+    reviews: REVIEWS
   },
   {
     id: 12,
@@ -205,6 +228,7 @@ export const FILMS: Film[] = [
     imageSrc: '/img/snatch.jpg',
     videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
+    runTime: 120,
     year: 2015,
     rating: {
       score: 7.0,
@@ -214,8 +238,9 @@ export const FILMS: Film[] = [
     description: {
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       director: 'David Yates',
-      starring: 'Eddie Redmayne, Katherine Waterston, Johnny Depp',
-    }
+      starring: ['Eddie Redmayne', 'Katherine Waterston', 'Johnny Depp']
+    },
+    reviews: REVIEWS
   },
   {
     id: 13,
@@ -223,6 +248,7 @@ export const FILMS: Film[] = [
     imageSrc: '/img/moonrise-kingdom.jpg',
     videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
+    runTime: 120,
     year: 2015,
     rating: {
       score: 7.0,
@@ -232,8 +258,9 @@ export const FILMS: Film[] = [
     description: {
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       director: 'David Yates',
-      starring: 'Eddie Redmayne, Katherine Waterston, Johnny Depp',
-    }
+      starring: ['Eddie Redmayne', 'Katherine Waterston', 'Johnny Depp']
+    },
+    reviews: REVIEWS
   },
   {
     id: 14,
@@ -241,6 +268,7 @@ export const FILMS: Film[] = [
     imageSrc: '/img/seven-years-in-tibet.jpg',
     videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
+    runTime: 120,
     year: 2015,
     rating: {
       score: 7.0,
@@ -250,8 +278,9 @@ export const FILMS: Film[] = [
     description: {
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       director: 'David Yates',
-      starring: 'Eddie Redmayne, Katherine Waterston, Johnny Depp',
-    }
+      starring: ['Eddie Redmayne', 'Katherine Waterston', 'Johnny Depp']
+    },
+    reviews: REVIEWS
   },
   {
     id: 15,
@@ -259,6 +288,7 @@ export const FILMS: Film[] = [
     imageSrc: '/img/midnight-special.jpg',
     videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
+    runTime: 120,
     year: 2015,
     rating: {
       score: 7.0,
@@ -268,8 +298,9 @@ export const FILMS: Film[] = [
     description: {
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       director: 'David Yates',
-      starring: 'Eddie Redmayne, Katherine Waterston, Johnny Depp',
-    }
+      starring: ['Eddie Redmayne', 'Katherine Waterston', 'Johnny Depp']
+    },
+    reviews: REVIEWS
   },
   {
     id: 16,
@@ -277,6 +308,7 @@ export const FILMS: Film[] = [
     imageSrc: '/img/war-of-the-worlds.jpg',
     videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
+    runTime: 120,
     year: 2015,
     rating: {
       score: 7.0,
@@ -286,8 +318,9 @@ export const FILMS: Film[] = [
     description: {
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       director: 'David Yates',
-      starring: 'Eddie Redmayne, Katherine Waterston, Johnny Depp',
-    }
+      starring: ['Eddie Redmayne', 'Katherine Waterston', 'Johnny Depp']
+    },
+    reviews: REVIEWS
   },
   {
     id: 17,
@@ -295,6 +328,7 @@ export const FILMS: Film[] = [
     imageSrc: '/img/dardjeeling-limited.jpg',
     videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
+    runTime: 120,
     year: 2015,
     rating: {
       score: 7.0,
@@ -304,8 +338,9 @@ export const FILMS: Film[] = [
     description: {
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       director: 'David Yates',
-      starring: 'Eddie Redmayne, Katherine Waterston, Johnny Depp',
-    }
+      starring: ['Eddie Redmayne', 'Katherine Waterston', 'Johnny Depp']
+    },
+    reviews: REVIEWS
   },
   {
     id: 18,
@@ -313,6 +348,7 @@ export const FILMS: Film[] = [
     imageSrc: '/img/orlando.jpg',
     videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
+    runTime: 120,
     year: 2015,
     rating: {
       score: 7.0,
@@ -322,8 +358,9 @@ export const FILMS: Film[] = [
     description: {
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       director: 'David Yates',
-      starring: 'Eddie Redmayne, Katherine Waterston, Johnny Depp',
-    }
+      starring: ['Eddie Redmayne', 'Katherine Waterston', 'Johnny Depp']
+    },
+    reviews: REVIEWS
   },
   {
     id: 19,
@@ -331,6 +368,7 @@ export const FILMS: Film[] = [
     imageSrc: '/img/mindhunter.jpg',
     videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
+    runTime: 120,
     year: 2015,
     rating: {
       score: 7.0,
@@ -340,8 +378,9 @@ export const FILMS: Film[] = [
     description: {
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       director: 'David Yates',
-      starring: 'Eddie Redmayne, Katherine Waterston, Johnny Depp',
-    }
+      starring: ['Eddie Redmayne', 'Katherine Waterston', 'Johnny Depp']
+    },
+    reviews: REVIEWS
   },
   {
     id: 20,
@@ -349,6 +388,7 @@ export const FILMS: Film[] = [
     imageSrc: '/img/midnight-special.jpg',
     videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
+    runTime: 120,
     year: 2015,
     rating: {
       score: 7.0,
@@ -358,6 +398,7 @@ export const FILMS: Film[] = [
     description: {
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       director: 'David Yates',
-      starring: 'Eddie Redmayne, Katherine Waterston, Johnny Depp',
-    }
+      starring: ['Eddie Redmayne', 'Katherine Waterston', 'Johnny Depp']
+    },
+    reviews: REVIEWS
   }];
