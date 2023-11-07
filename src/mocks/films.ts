@@ -4,8 +4,8 @@ export const FILMS: Film[] = [
   {
     id: 1,
     title: 'Fantastic Beasts: The Crimes of Grindelwald',
-    imageUrl: '/img/fantastic-beasts-the-crimes-of-grindelwald.jpg',
-    videoUrl: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    imageSrc: '/img/fantastic-beasts-the-crimes-of-grindelwald.jpg',
+    videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
     year: 2015,
     rating: {
@@ -22,8 +22,8 @@ export const FILMS: Film[] = [
   {
     id: 2,
     title: 'Bohemian Rhapsody',
-    imageUrl: '/img/bohemian-rhapsody.jpg',
-    videoUrl: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    imageSrc: '/img/bohemian-rhapsody.jpg',
+    videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
     year: 2015,
     rating: {
@@ -40,8 +40,8 @@ export const FILMS: Film[] = [
   {
     id: 3,
     title: 'Macbeth',
-    imageUrl: '/img/macbeth.jpg',
-    videoUrl: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    imageSrc: '/img/macbeth.jpg',
+    videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
     year: 2015,
     rating: {
@@ -58,8 +58,8 @@ export const FILMS: Film[] = [
   {
     id: 4,
     title: 'Aviator',
-    imageUrl: '/img/aviator.jpg',
-    videoUrl: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    imageSrc: '/img/aviator.jpg',
+    videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
     year: 2015,
     rating: {
@@ -76,8 +76,8 @@ export const FILMS: Film[] = [
   {
     id: 5,
     title: 'We need to talk about Kevin',
-    imageUrl: '/img/we-need-to-talk-about-kevin.jpg',
-    videoUrl: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    imageSrc: '/img/we-need-to-talk-about-kevin.jpg',
+    videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
     year: 2015,
     rating: {
@@ -94,8 +94,8 @@ export const FILMS: Film[] = [
   {
     id: 6,
     title: 'What We Do in the Shadows',
-    imageUrl: '/img/what-we-do-in-the-shadows.jpg',
-    videoUrl: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    imageSrc: '/img/what-we-do-in-the-shadows.jpg',
+    videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
     year: 2015,
     rating: {
@@ -112,8 +112,8 @@ export const FILMS: Film[] = [
   {
     id: 7,
     title: 'Revenant',
-    imageUrl: '/img/revenant.jpg',
-    videoUrl: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    imageSrc: '/img/revenant.jpg',
+    videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
     year: 2015,
     rating: {
@@ -130,8 +130,8 @@ export const FILMS: Film[] = [
   {
     id: 8,
     title: 'Johnny English',
-    imageUrl: '/img/johnny-english.jpg',
-    videoUrl: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    imageSrc: '/img/johnny-english.jpg',
+    videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
     year: 2015,
     rating: {
@@ -148,8 +148,8 @@ export const FILMS: Film[] = [
   {
     id: 9,
     title: 'Shutter Island',
-    imageUrl: '/img/shutter-island.jpg',
-    videoUrl: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    imageSrc: '/img/shutter-island.jpg',
+    videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
     year: 2015,
     rating: {
@@ -166,8 +166,8 @@ export const FILMS: Film[] = [
   {
     id: 10,
     title: 'Pulp Fiction',
-    imageUrl: '/img/pulp-fiction.jpg',
-    videoUrl: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    imageSrc: '/img/pulp-fiction.jpg',
+    videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
     year: 2015,
     rating: {
@@ -184,8 +184,8 @@ export const FILMS: Film[] = [
   {
     id: 11,
     title: 'No Country for Old Men',
-    imageUrl: '/img/no-country-for-old-men.jpg',
-    videoUrl: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    imageSrc: '/img/no-country-for-old-men.jpg',
+    videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
     year: 2015,
     rating: {
@@ -202,8 +202,8 @@ export const FILMS: Film[] = [
   {
     id: 12,
     title: 'Snatch',
-    imageUrl: '/img/snatch.jpg',
-    videoUrl: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    imageSrc: '/img/snatch.jpg',
+    videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
     year: 2015,
     rating: {
@@ -220,8 +220,8 @@ export const FILMS: Film[] = [
   {
     id: 13,
     title: 'Moonrise Kingdom',
-    imageUrl: '/img/moonrise-kingdom.jpg',
-    videoUrl: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    imageSrc: '/img/moonrise-kingdom.jpg',
+    videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
     year: 2015,
     rating: {
@@ -238,8 +238,8 @@ export const FILMS: Film[] = [
   {
     id: 14,
     title: 'Seven Years in Tibet',
-    imageUrl: '/img/seven-years-in-tibet.jpg',
-    videoUrl: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    imageSrc: '/img/seven-years-in-tibet.jpg',
+    videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
     year: 2015,
     rating: {
@@ -256,8 +256,8 @@ export const FILMS: Film[] = [
   {
     id: 15,
     title: 'Midnight Special',
-    imageUrl: '/img/midnight-special.jpg',
-    videoUrl: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    imageSrc: '/img/midnight-special.jpg',
+    videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
     year: 2015,
     rating: {
@@ -274,8 +274,8 @@ export const FILMS: Film[] = [
   {
     id: 16,
     title: 'War of the Worlds',
-    imageUrl: '/img/war-of-the-worlds.jpg',
-    videoUrl: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    imageSrc: '/img/war-of-the-worlds.jpg',
+    videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
     year: 2015,
     rating: {
@@ -292,8 +292,8 @@ export const FILMS: Film[] = [
   {
     id: 17,
     title: 'Dardjeeling Limited',
-    imageUrl: '/img/dardjeeling-limited.jpg',
-    videoUrl: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    imageSrc: '/img/dardjeeling-limited.jpg',
+    videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
     year: 2015,
     rating: {
@@ -310,8 +310,8 @@ export const FILMS: Film[] = [
   {
     id: 18,
     title: 'Orlando',
-    imageUrl: '/img/orlando.jpg',
-    videoUrl: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    imageSrc: '/img/orlando.jpg',
+    videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
     year: 2015,
     rating: {
@@ -328,8 +328,8 @@ export const FILMS: Film[] = [
   {
     id: 19,
     title: 'Mindhunter',
-    imageUrl: '/img/mindhunter.jpg',
-    videoUrl: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    imageSrc: '/img/mindhunter.jpg',
+    videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
     year: 2015,
     rating: {
@@ -346,8 +346,8 @@ export const FILMS: Film[] = [
   {
     id: 20,
     title: 'Midnight Special',
-    imageUrl: '/img/midnight-special.jpg',
-    videoUrl: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    imageSrc: '/img/midnight-special.jpg',
+    videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     genre: 'Drama',
     year: 2015,
     rating: {
