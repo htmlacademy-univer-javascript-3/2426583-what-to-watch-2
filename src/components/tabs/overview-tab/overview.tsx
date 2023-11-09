@@ -1,4 +1,4 @@
-import {Film} from '../../models/models';
+import {Film} from '../../../models/models';
 
 type OverviewProps = {
   film: Film;

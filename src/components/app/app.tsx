@@ -20,7 +20,7 @@ export default function App({films}: AppProps): JSX.Element {
     <BrowserRouter>
       <Routes>
         <Route path={AppRoute.Main} element={<Layout/>}>
-          <Route index element={<Main films={films}/>}/>
+          <Route index element={<Main cfilms={films}/>}/>
           <Route path={AppRoute.Login} element={<Login/>}/>
           <Route path={AppRoute.MyList} element={<ProtectedRoute restrictedFor={AuthorizationStatus.Auth} redirectTo={AppRoute.Login}><MyList films={films}/></ProtectedRoute>}/>
           <Route path={AppRoute.Film}>

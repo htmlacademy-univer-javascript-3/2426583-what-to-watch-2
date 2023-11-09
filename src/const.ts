@@ -20,3 +20,5 @@ export const enum Tab {
   reviews = 'Reviews'
 }
 
+export const GENRE_FOR_ALL_FILMS = 'All films';
+
