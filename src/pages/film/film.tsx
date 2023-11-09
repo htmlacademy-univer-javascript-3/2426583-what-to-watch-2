@@ -29,7 +29,7 @@ type FilmPageProps = {
 
 export function FilmPage({films}: FilmPageProps): JSX.Element {
   const [selectedTab, setSelectedTab] = useState(Tab.overview);
-  const [moreLikeThisFilms, setMoreLikeThisFilms] = useState([]);
+  const [moreLikeThisFilms, setMoreLikeThisFilms] = useState<Film[]>([]);
 
   const handleTabClick = useCallback((tab: Tab) => {
     setSelectedTab(tab);
