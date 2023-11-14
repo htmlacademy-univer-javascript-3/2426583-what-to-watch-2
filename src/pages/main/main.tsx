@@ -7,11 +7,23 @@ import {FILMS} from '../../mocks/films';
 import {Film} from '../../models/models';
 import {useAppSelector} from '../../hooks';
 import {State} from '../../models/state';
+import {useEffect, useState} from 'react';
+import {ShowMoreBtn} from './show-more-btn/show-more-btn';
 
-
+const COUNT_OF_FILMS_SHOWN = 8;
 export function Main(): JSX.Element {
-  const filteredFilms: Film[] = useAppSelector((state: State) => state.films);
+  const filmsByGenre: Film[] = useAppSelector((state: State) => state.films);
+  const [maxShownFilms, setMaxShownFilms] = useState(8);
+  const isShowMoreButtonVisible = maxShownFilms < filmsByGenre.length;
   const firstFilm = FILMS[0];
+
+  useEffect(() => {
+    setMaxShownFilms(COUNT_OF_FILMS_SHOWN);
+  }, [filmsByGenre]);
+
+  const showMore = () => {
+    setMaxShownFilms(maxShownFilms + COUNT_OF_FILMS_SHOWN);
+  };
 
   return (
     <div>
@@ -52,7 +64,7 @@ export function Main(): JSX.Element {
                     <use xlinkHref='#add'/>
                   </svg>
                   <span>My list</span>
-                  <span className='film-card__count'>{filteredFilms.length}</span>
+                  <span className='film-card__count'>{filmsByGenre.length}</span>
                 </button>
               </div>
             </div>
@@ -66,11 +78,9 @@ export function Main(): JSX.Element {
 
           <GenresList></GenresList>
 
-          <FilmsList films={filteredFilms}/>
+          <FilmsList films={filmsByGenre.slice(0, maxShownFilms)}/>
 
-          <div className='catalog__more'>
-            <button className='catalog__button' type='button'>Show more</button>
-          </div>
+          {isShowMoreButtonVisible && <ShowMoreBtn handleClick={showMore}></ShowMoreBtn>}
         </section>
 
         <footer className='page-footer'>

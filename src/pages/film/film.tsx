@@ -97,7 +97,7 @@ export function FilmPage({films}: FilmPageProps): JSX.Element {
 
             <div className='film-card__desc'>
               <Tabs
-                onTabSelected={(tab: Tab) => handleTabClick(tab)}
+                onTabSelected={handleTabClick}
                 selectedTab={selectedTab}
               >
               </Tabs>

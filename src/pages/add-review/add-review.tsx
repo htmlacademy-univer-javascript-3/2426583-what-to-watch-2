@@ -60,7 +60,7 @@ export function AddReview({films}: AddReviewProps): JSX.Element {
         </div>
       </div>
 
-      <ReviewForm onSend={(newReview: UserReview) => setReview(newReview)}></ReviewForm>
+      <ReviewForm onSend={setReview}></ReviewForm>
     </section>
   );
 }

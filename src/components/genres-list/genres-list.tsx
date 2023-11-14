@@ -28,9 +28,8 @@ export function GenresList(): JSX.Element {
           <GenreItem key={genre}
             genre={genre}
             isActive={currentGenre === genre}
-            onGenreItemClick={(selectedGenre: string) => handleSetGenre(selectedGenre)}
-          >
-          </GenreItem>
+            onGenreItemClick={handleSetGenre}
+          />
         ))
       }
     </ul>
