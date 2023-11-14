@@ -6,9 +6,9 @@ export type ShortFilmInfo = {
 
 export type Film = {
   id: number;
-  title: string;
-  imageSrc: string;
-  videoSrc: string;
+  name: string;
+  previewImage: string;
+  previewVideoLink: string;
   genre: string;
   runTime: number;
   year: number;

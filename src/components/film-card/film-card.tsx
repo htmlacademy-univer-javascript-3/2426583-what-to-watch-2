@@ -21,16 +21,16 @@ export function FilmCard({shortFilmInfo, onMouseEnter, onMouseLeave, isActive}: 
       >
         {isActive && (
           <VideoPlayer
-            src={shortFilmInfo.videoSrc}
-            preview={shortFilmInfo.imageSrc}
+            src={shortFilmInfo.previewVideoLink}
+            preview={shortFilmInfo.previewImage}
           />
         )}
         {!isActive && (
-          <img src={shortFilmInfo.imageSrc} alt={shortFilmInfo.title} />
+          <img src={shortFilmInfo.previewImage} alt={shortFilmInfo.name} />
         )}
       </div>
       <h3 className="small-film-card__title">
-        <Link className="small-film-card__link" to={`${AppRoute.Film}/${shortFilmInfo.id}`}>{shortFilmInfo.title}</Link>
+        <Link className="small-film-card__link" to={`${AppRoute.Film}/${shortFilmInfo.id}`}>{shortFilmInfo.name}</Link>
       </h3>
     </article>
   );
