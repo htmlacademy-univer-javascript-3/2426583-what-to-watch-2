@@ -7,8 +7,8 @@ import {AppRoute, Tab} from '../../const';
 import {useFilm} from '../../hooks/use-film-hook';
 import {useCallback, useEffect, useState} from 'react';
 import {Tabs} from '../../components/tabs/tabs';
-import {Overview} from '../../components/tabs/overview';
-import {Details} from '../../components/tabs/details';
+import {Overview} from '../../components/tabs/overview-tab/overview';
+import {Details} from '../../components/tabs/details-tab/details';
 import {Reviews} from '../../components/tabs/reviews-tab/reviews';
 import {FilmsList} from '../../components/films-list/films-list';
 
@@ -29,7 +29,7 @@ type FilmPageProps = {
 
 export function FilmPage({films}: FilmPageProps): JSX.Element {
   const [selectedTab, setSelectedTab] = useState(Tab.overview);
-  const [moreLikeThisFilms, setMoreLikeThisFilms] = useState([]);
+  const [moreLikeThisFilms, setMoreLikeThisFilms] = useState<Film[]>([]);
 
   const handleTabClick = useCallback((tab: Tab) => {
     setSelectedTab(tab);

@@ -1,4 +1,4 @@
-import {Film} from '../../models/models';
+import {Film} from '../../../models/models';
 import {getRunTime} from './details-util';
 
 type DetailsProps = {
