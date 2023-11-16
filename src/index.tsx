@@ -4,12 +4,15 @@ import {Provider} from 'react-redux';
 import App from './components/app/app';
 import {FILMS} from './mocks/films';
 import {store} from './store';
-import {fetchFilmsAction} from './store/api-actions';
+import {checkAuthAction, fetchFilmsAction} from './store/api-actions';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const appInitProps = {
   films: FILMS
 };
 
+store.dispatch(checkAuthAction());
 store.dispatch(fetchFilmsAction());
 
 const root = ReactDOM.createRoot(
@@ -19,6 +22,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      <ToastContainer />
       <App
         films={appInitProps.films}
       />

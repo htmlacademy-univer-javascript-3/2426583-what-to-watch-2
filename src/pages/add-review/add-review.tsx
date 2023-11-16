@@ -1,12 +1,11 @@
 import './add-review.css';
-import {UserBlock} from '../../components/user-block/user-block';
-import {Logo} from '../../components/logo/logo';
 import {Link, Navigate} from 'react-router-dom';
 import {Film, UserReview} from '../../models/models';
 import {AppRoute} from '../../const';
 import {ReviewForm} from '../../components/review-form/review-form';
 import {useState} from 'react';
 import {useFilm} from '../../hooks/use-film-hook';
+import {Header} from '../../components/header/header';
 
 
 type AddReviewProps = {
@@ -37,10 +36,7 @@ export function AddReview({films}: AddReviewProps): JSX.Element {
         </div>
 
         <h1 className='visually-hidden'>WTW</h1>
-
-        <header className='page-header'>
-          <Logo/>
-
+        <Header className={''}>
           <nav className='breadcrumbs'>
             <ul className='breadcrumbs__list'>
               <li className='breadcrumbs__item'>
@@ -51,9 +47,7 @@ export function AddReview({films}: AddReviewProps): JSX.Element {
               </li>
             </ul>
           </nav>
-
-          <UserBlock/>
-        </header>
+        </Header>
 
         <div className='film-card__poster film-card__poster--small'>
           <img src={film.previewImage} alt={film.name}/>

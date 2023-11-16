@@ -1,7 +1,6 @@
 import {Film} from '../../models/models';
 import './film.css';
 import {Logo} from '../../components/logo/logo';
-import {UserBlock} from '../../components/user-block/user-block';
 import {Link, Navigate} from 'react-router-dom';
 import {AppRoute, Tab} from '../../const';
 import {useFilm} from '../../hooks/use-film-hook';
@@ -11,6 +10,7 @@ import {Overview} from '../../components/tabs/overview-tab/overview';
 import {Details} from '../../components/tabs/details-tab/details';
 import {Reviews} from '../../components/tabs/reviews-tab/reviews';
 import {FilmsList} from '../../components/films-list/films-list';
+import {Header} from '../../components/header/header';
 
 const getComponentBySelectedTab = (selectedTab: Tab, film: Film) => {
   switch (selectedTab) {
@@ -56,10 +56,7 @@ export function FilmPage({films}: FilmPageProps): JSX.Element {
 
           <h1 className='visually-hidden'>WTW</h1>
 
-          <header className='page-header film-card__head'>
-            <Logo/>
-            <UserBlock/>
-          </header>
+          <Header className={'film-card__head'}/>
 
           <div className='film-card__wrap'>
             <div className='film-card__desc'>
