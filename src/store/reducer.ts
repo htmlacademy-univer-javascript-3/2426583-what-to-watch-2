@@ -1,14 +1,14 @@
 import {createReducer} from '@reduxjs/toolkit';
 import {
   changeGenre,
-  getFilmsByGenre,
-  loadFilms,
+  getFilmsByGenre, setFilm,
+  setFilms, setSimilarFilms,
   requireAuthorization,
-  setFilmsDataLoadingStatus, setUser
+  setFilmsDataLoadingStatus, setUser, setFilmComments
 } from './action';
 import {State} from '../models/state';
-import {AuthorizationStatus, GENRE_FOR_ALL_FILMS} from '../const';
-import {Film} from '../models/models';
+import {AuthorizationStatus, GENRE_FOR_ALL_FILMS, USER_KEY_NAME} from '../const';
+import {Film, FullFilm, UserReview} from '../models/models';
 import {UserData} from '../models/user';
 
 type InitialStateType = {
@@ -18,6 +18,9 @@ type InitialStateType = {
   films: Film[];
   authorizationStatus: AuthorizationStatus;
   user: UserData | null;
+  film: FullFilm | null;
+  similarFilms: Film[];
+  reviews: UserReview[];
 }
 
 const initialState: InitialStateType = {
@@ -27,6 +30,9 @@ const initialState: InitialStateType = {
   films: [],
   authorizationStatus: AuthorizationStatus.Unknown,
   user: null,
+  film: null,
+  similarFilms: [],
+  reviews: []
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -41,17 +47,27 @@ const reducer = createReducer(initialState, (builder) => {
         state.filmsByGenre = state.films.filter((film) => film.genre === state.genre);
       }
     })
-    .addCase(loadFilms, (state, action) => {
+    .addCase(setFilms, (state, action) => {
       state.films = action.payload;
     })
     .addCase(setFilmsDataLoadingStatus, (state, action) => {
       state.isFilmsDataLoading = action.payload;
+    })
+    .addCase(setFilm, (state, action) => {
+      state.film = action.payload;
+    })
+    .addCase(setSimilarFilms, (state, action) => {
+      state.similarFilms = action.payload;
+    })
+    .addCase(setFilmComments, (state, action) => {
+      state.reviews = action.payload;
     })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;
     })
     .addCase(setUser, (state, action) => {
       state.user = action.payload;
+      localStorage.setItem(USER_KEY_NAME, state.user.avatarUrl);
     });
 });
 

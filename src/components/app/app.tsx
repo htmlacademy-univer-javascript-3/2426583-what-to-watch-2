@@ -30,8 +30,8 @@ export default function App({films}: AppProps): JSX.Element {
           <Route path={AppRoute.Login} element={<Login/>}/>
           <Route path={AppRoute.MyList} element={<ProtectedRoute authorizationStatus={authorizationStatus}><MyList films={films}/></ProtectedRoute>}/>
           <Route path={AppRoute.Film}>
-            <Route path=':id' element={<FilmPage films={films}/>}/>
-            <Route path={`:id${AppRoute.AddReview}`} element={<AddReview films={films}/>}/>
+            <Route path=':id' element={<FilmPage/>}/>
+            <Route path={`:id${AppRoute.AddReview}`} element={<ProtectedRoute authorizationStatus={authorizationStatus}><AddReview/></ProtectedRoute>}/>
           </Route>
           <Route path={`${AppRoute.Player}/:id`} element={<Player films={films}/>}/>
         </Route>

@@ -1,28 +1,14 @@
 import './add-review.css';
 import {Link, Navigate} from 'react-router-dom';
-import {Film, UserReview} from '../../models/models';
+import {FullFilm} from '../../models/models';
 import {AppRoute} from '../../const';
 import {ReviewForm} from '../../components/review-form/review-form';
-import {useState} from 'react';
-import {useFilm} from '../../hooks/use-film-hook';
 import {Header} from '../../components/header/header';
+import {useAppSelector} from '../../hooks';
+import {State} from '../../models/state';
 
-
-type AddReviewProps = {
-  films: Film[];
-}
-
-const defaultReview: UserReview = {
-  id: 0,
-  text: '',
-  author: 'Matthew Lickona',
-  date: new Date(),
-  rating: 7.2
-};
-
-export function AddReview({films}: AddReviewProps): JSX.Element {
-  const [review, setReview] = useState(defaultReview);
-  const film = useFilm(films);
+export function AddReview(): JSX.Element {
+  const film: FullFilm | null = useAppSelector((state: State) => state.film);
 
   if (!film) {
     return <Navigate to={`${AppRoute.NotFound}`} />;
@@ -32,7 +18,7 @@ export function AddReview({films}: AddReviewProps): JSX.Element {
     <section className='film-card film-card--full'>
       <div className='film-card__header'>
         <div className='film-card__bg'>
-          <img src={film.previewImage} alt={film.name}/>
+          <img src={film.backgroundImage} alt={film.name}/>
         </div>
 
         <h1 className='visually-hidden'>WTW</h1>
@@ -50,11 +36,11 @@ export function AddReview({films}: AddReviewProps): JSX.Element {
         </Header>
 
         <div className='film-card__poster film-card__poster--small'>
-          <img src={film.previewImage} alt={film.name}/>
+          <img src={film.posterImage} alt={film.name}/>
         </div>
       </div>
 
-      <ReviewForm onSend={setReview}></ReviewForm>
+      <ReviewForm filmId={film.id}></ReviewForm>
     </section>
   );
 }

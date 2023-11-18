@@ -1,8 +1,8 @@
-import {Film} from '../../../models/models';
-import {getRunTime} from './details-util';
+import {FullFilm} from '../../../models/models';
+import {getRunTime} from './details-utils';
 
 type DetailsProps = {
-  film: Film;
+  film: FullFilm;
 }
 
 export function Details({film}: DetailsProps): JSX.Element {
@@ -11,12 +11,12 @@ export function Details({film}: DetailsProps): JSX.Element {
       <div className="film-card__text-col">
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Director</strong>
-          <span className="film-card__details-value">{film.description.director}</span>
+          <span className="film-card__details-value">{film.director}</span>
         </p>
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Starring</strong>
           <span className="film-card__details-value">
-            {film.description.starring}
+            {film.starring}
           </span>
         </p>
       </div>
@@ -32,7 +32,7 @@ export function Details({film}: DetailsProps): JSX.Element {
         </p>
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Released</strong>
-          <span className="film-card__details-value">{film.year}</span>
+          <span className="film-card__details-value">{film.released}</span>
         </p>
       </div>
     </div>);

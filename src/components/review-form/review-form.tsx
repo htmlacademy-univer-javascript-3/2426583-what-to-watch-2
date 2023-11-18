@@ -1,23 +1,23 @@
 import {ChangeEvent, FormEvent, Fragment, useState} from 'react';
-import {UserReview} from '../../models/models';
+import {AddCommentRequest} from '../../models/models';
+import {addCommentAction} from '../../store/api-actions';
+import {useAppDispatch} from '../../hooks';
 
 const RATING_VALUES = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 
-const defaultReview: UserReview = {
-  id: 0,
-  text: '',
-  author: 'Matthew Lickona',
-  date: new Date(),
-  rating: 7.2
+const defaultReview: AddCommentRequest = {
+  filmId: '',
+  comment: '',
+  rating: 0
 };
 
 type ReviewFormProps = {
-  onSend: (review: UserReview) => void;
+  filmId: string;
 }
 
-export function ReviewForm({onSend}: ReviewFormProps): JSX.Element {
+export function ReviewForm({filmId} :ReviewFormProps): JSX.Element {
   const [review, setReview] = useState(defaultReview);
-
+  const dispatch = useAppDispatch();
   function handleRatingChange(evt: ChangeEvent<HTMLInputElement>) {
     setReview({
       ...review,
@@ -28,13 +28,23 @@ export function ReviewForm({onSend}: ReviewFormProps): JSX.Element {
   function handleTextAreaChange(evt: ChangeEvent<HTMLTextAreaElement>) {
     setReview({
       ...review,
-      text: evt.target.value
+      comment: evt.target.value
     });
   }
 
+  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+
+    dispatch(addCommentAction({
+      filmId: filmId,
+      comment: review.comment,
+      rating: review.rating
+    }));
+  };
+
   return (
     <div className='add-review'>
-      <form action='#' className='add-review__form'>
+      <form action='#' className='add-review__form' onSubmit={handleSubmit}>
         <div className='rating'>
           <div className='rating__stars'>
             {
@@ -61,10 +71,6 @@ export function ReviewForm({onSend}: ReviewFormProps): JSX.Element {
             <button
               className='add-review__btn'
               type='submit'
-              onSubmit={(evt: FormEvent<HTMLButtonElement>) => {
-                evt.preventDefault();
-                onSend(review);
-              }}
             >
               Post
             </button>

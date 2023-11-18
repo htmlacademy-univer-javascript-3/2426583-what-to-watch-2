@@ -1,11 +1,10 @@
 import {UserReview} from '../../../models/models';
 import {Review} from './review';
+import {useAppSelector} from '../../../hooks';
 
-type ReviewsProps = {
-  reviews: UserReview[];
-}
+export function Reviews(): JSX.Element {
+  const reviews = useAppSelector((state) => state.reviews);
 
-export function Reviews({reviews}: ReviewsProps): JSX.Element {
   return (
     <div className="film-card__reviews film-card__row">
       <div className="film-card__reviews-col">

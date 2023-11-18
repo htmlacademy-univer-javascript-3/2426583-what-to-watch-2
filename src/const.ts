@@ -24,6 +24,15 @@ export const GENRE_FOR_ALL_FILMS = 'All films';
 
 export const enum APIRoute {
   Films = '/films',
-  Login = '/login'
+  Login = '/login',
+  Comments = '/comments'
 }
 
+export enum ReduxStateStatus {
+  Pending = 'pending',
+  Fulfilled = 'fulfilled',
+  Rejected = 'rejected',
+  Idle = 'idle'
+}
+
+export const USER_KEY_NAME = 'what-to-watch-user';
