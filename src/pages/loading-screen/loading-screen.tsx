@@ -11,7 +11,7 @@ export function LoadingScreen(): JSX.Element {
         ariaLabel="tail-spin-loading"
         radius="1"
         wrapperClass="preloader"
-        visible="true"
+        visible
       />
     </section>
   );

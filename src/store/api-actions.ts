@@ -50,9 +50,7 @@ export const fetchSimilarFilmsAction = createAsyncThunk<void, string, {
 }>(
   'loadSimilarFilms',
   async (arg, {dispatch, extra: api}) => {
-    // dispatch(setFilmsDataLoadingStatus(true));
     const {data: film} = await api.get<Film[]>(`${APIRoute.Films}/${arg}/similar`);
-    // dispatch(setFilmsDataLoadingStatus(false));
     dispatch(setSimilarFilms(film));
   },
 );

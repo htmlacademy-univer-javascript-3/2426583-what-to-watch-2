@@ -50,19 +50,6 @@ export function FilmPage(): JSX.Element {
     setMoreLikeThisFilms(sameGenreFilms);
   }, [similarFilms, film]);
 
-  // if (isFilmLoading) {
-  //   return (<TailSpin
-  //     height="80"
-  //     width="80"
-  //     color="#dfcf77"
-  //     ariaLabel="tail-spin-loading"
-  //     radius="1"
-  //     wrapperStyle={{'position': 'absolute', 'zIndex' : '1000', 'top': '50%', 'left': '50%', 'marginLeft': '-48px', 'marginTop': '-48px'}}
-  //     wrapperClass=""
-  //     visible={isFilmLoading}
-  //           />);
-  // }
-
   return (
     <>
       {isFilmLoading && <LoadingScreen/>}
@@ -75,7 +62,7 @@ export function FilmPage(): JSX.Element {
 
             <h1 className='visually-hidden'>WTW</h1>
 
-            <Header className={'film-card__head'}/>
+            <Header customClassName={'film-card__head'}/>
 
             <div className='film-card__wrap'>
               <div className='film-card__desc'>
@@ -101,7 +88,8 @@ export function FilmPage(): JSX.Element {
                   </button>
                   {isAuth &&
                     <Link to={`${AppRoute.Film}/${film.id}${AppRoute.AddReview}`} className='btn film-card__button'>Add
-                      review</Link>}
+                      review
+                    </Link>}
                 </div>
               </div>
             </div>
@@ -117,8 +105,7 @@ export function FilmPage(): JSX.Element {
                 <Tabs
                   onTabSelected={handleTabClick}
                   selectedTab={selectedTab}
-                >
-                </Tabs>
+                />
                 {getComponentBySelectedTab(selectedTab, film)}
               </div>
             </div>

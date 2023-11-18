@@ -7,12 +7,12 @@ import classnames from 'classnames';
 
 type HeaderProps = {
   children: JSX.Element | null;
-  className: string;
+  customClassName: string;
 }
-export function Header({ children , className}: HeaderProps): JSX.Element {
+export function Header({ children , customClassName}: HeaderProps): JSX.Element {
   const authorizationStatus: AuthorizationStatus = useAppSelector((state: State) => state.authorizationStatus);
   return (
-    <header className={classnames('page-header', className)}>
+    <header className={classnames('page-header', customClassName)}>
       <Logo/>
       {children}
       { authorizationStatus === AuthorizationStatus.Auth && <UserBlock/>}
