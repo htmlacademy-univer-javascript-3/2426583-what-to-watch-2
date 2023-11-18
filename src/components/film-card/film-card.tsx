@@ -21,7 +21,8 @@ export function FilmCard({shortFilmInfo, onMouseEnter, onMouseLeave, isActive}: 
       >
         {isActive && (
           <VideoPlayer
-            {...shortFilmInfo}
+            src={shortFilmInfo.previewVideoLink}
+            preview={shortFilmInfo.previewImage}
           />
         )}
         {!isActive && (

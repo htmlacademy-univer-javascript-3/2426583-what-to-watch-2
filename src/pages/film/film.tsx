@@ -62,7 +62,7 @@ export function FilmPage(): JSX.Element {
 
             <h1 className='visually-hidden'>WTW</h1>
 
-            <Header customClassName={'film-card__head'}/>
+            <Header customClassName={'film-card__head'}></Header>
 
             <div className='film-card__wrap'>
               <div className='film-card__desc'>
