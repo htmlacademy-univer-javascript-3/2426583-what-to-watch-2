@@ -12,7 +12,7 @@ import {NotFound} from '../../pages/not-found/not-found';
 import ProtectedRoute from '../private-route/protected-route';
 import {useAppSelector} from '../../hooks';
 import {State} from '../../models/state';
-import HistoryRouter from '../history-route/history-route';
+import HistoryRouter from '../history-router/history-router';
 import browserHistory from '../../browser-history';
 
 type AppProps = {

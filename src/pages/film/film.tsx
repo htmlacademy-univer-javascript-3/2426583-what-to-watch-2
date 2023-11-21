@@ -34,10 +34,8 @@ export function FilmPage(): JSX.Element {
   const film: FullFilm | null = useAppSelector((state: State) => state.film);
   const similarFilms: Film[] = useAppSelector((state: State) => state.similarFilms);
 
-  const isAuth =
-    useAppSelector(
-      (state) => state.authorizationStatus
-    ) === AuthorizationStatus.Auth;
+  const authorizationStatus = useAppSelector((state: State) => state.authorizationStatus);
+  const isAuth = authorizationStatus === AuthorizationStatus.Auth;
 
   useLoadFilm();
 
