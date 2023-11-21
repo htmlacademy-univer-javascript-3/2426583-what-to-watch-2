@@ -1,9 +1,3 @@
-export type ShortFilmInfo = {
-  title: string;
-  genre: string;
-  year: string;
-}
-
 export type Film = {
   id: number;
   name: string;
@@ -15,6 +9,24 @@ export type Film = {
   rating: FilmRating;
   description: FilmDescription;
   reviews: UserReview[];
+}
+
+export type FullFilm = {
+  id: string;
+  name: string;
+  posterImage: string;
+  backgroundImage: string;
+  backgroundColor: string;
+  videoLink: string;
+  description: string;
+  rating: number;
+  scoresCount: number;
+  director: string;
+  starring: string[];
+  runTime: number;
+  genre: string;
+  released: number;
+  isFavorite: boolean;
 }
 
 export type FilmRating = {
@@ -31,9 +43,15 @@ export type FilmDescription = {
 
 export type UserReview = {
   id: number;
-  text: string;
-  author: string;
+  comment: string;
+  user: string;
   date: Date;
+  rating: number;
+}
+
+export type AddCommentRequest = {
+  filmId: string;
+  comment: string;
   rating: number;
 }
 

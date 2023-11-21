@@ -12,7 +12,7 @@ export function MyList({films}: MyListProps): JSX.Element {
   return (
     <div className='user-page'>
 
-      <Header className={'user-page__head'}>
+      <Header customClassName={'user-page__head'}>
         <h1 className='page-title user-page__title'>My list <span className='user-page__film-count'>{films.length}</span>
         </h1>
       </Header>
