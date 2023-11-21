@@ -51,7 +51,7 @@ export function FilmPage({films}: FilmPageProps): JSX.Element {
       <section className='film-card film-card--full'>
         <div className='film-card__hero'>
           <div className='film-card__bg'>
-            <img src={film.imageSrc} alt={film.title}/>
+            <img src={film.previewImage} alt={film.name}/>
           </div>
 
           <h1 className='visually-hidden'>WTW</h1>
@@ -63,7 +63,7 @@ export function FilmPage({films}: FilmPageProps): JSX.Element {
 
           <div className='film-card__wrap'>
             <div className='film-card__desc'>
-              <h2 className='film-card__title'>{film.title}</h2>
+              <h2 className='film-card__title'>{film.name}</h2>
               <p className='film-card__meta'>
                 <span className='film-card__genre'>{film.genre}</span>
                 <span className='film-card__year'>{film.year}</span>
@@ -92,7 +92,7 @@ export function FilmPage({films}: FilmPageProps): JSX.Element {
         <div className='film-card__wrap film-card__translate-top'>
           <div className='film-card__info'>
             <div className='film-card__poster film-card__poster--big'>
-              <img src={film.imageSrc} alt={film.title}/>
+              <img src={film.previewImage} alt={film.name}/>
             </div>
 
             <div className='film-card__desc'>

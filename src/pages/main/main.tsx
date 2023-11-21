@@ -9,10 +9,12 @@ import {useAppSelector} from '../../hooks';
 import {State} from '../../models/state';
 import {useEffect, useState} from 'react';
 import {ShowMoreBtn} from './show-more-btn/show-more-btn';
+import {TailSpin} from 'react-loader-spinner';
 
 const COUNT_OF_FILMS_SHOWN = 8;
 export function Main(): JSX.Element {
-  const filmsByGenre: Film[] = useAppSelector((state: State) => state.films);
+  const filmsByGenre: Film[] = useAppSelector((state: State) => state.filmsByGenre);
+  const isFilmsDataLoading = useAppSelector((state) => state.isFilmsDataLoading);
   const [maxShownFilms, setMaxShownFilms] = useState(8);
   const isShowMoreButtonVisible = maxShownFilms < filmsByGenre.length;
   const firstFilm = FILMS[0];
@@ -27,9 +29,19 @@ export function Main(): JSX.Element {
 
   return (
     <div>
+      <TailSpin
+        height="80"
+        width="80"
+        color="#dfcf77"
+        ariaLabel="tail-spin-loading"
+        radius="1"
+        wrapperStyle={{'position': 'absolute', 'z-index' : '1000', 'top': '50%', 'left': '50%', 'margin-left': '-48px', 'margin-top': '-48px'}}
+        wrapperClass=""
+        visible={isFilmsDataLoading}
+      />
       <section className='film-card'>
         <div className='film-card__bg'>
-          <img src={firstFilm.imageSrc} alt={firstFilm.title}/>
+          <img src={firstFilm.previewImage} alt={firstFilm.name}/>
         </div>
 
         <h1 className='visually-hidden'>WTW</h1>
@@ -42,11 +54,11 @@ export function Main(): JSX.Element {
         <div className='film-card__wrap'>
           <div className='film-card__info'>
             <div className='film-card__poster'>
-              <img src={firstFilm.imageSrc} alt={firstFilm.title}/>
+              <img src={firstFilm.previewImage} alt={firstFilm.name}/>
             </div>
 
             <div className='film-card__desc'>
-              <h2 className='film-card__title'>{firstFilm.title}</h2>
+              <h2 className='film-card__title'>{firstFilm.name}</h2>
               <p className='film-card__meta'>
                 <span className='film-card__genre'>{firstFilm.genre}</span>
                 <span className='film-card__year'>{firstFilm.year}</span>
