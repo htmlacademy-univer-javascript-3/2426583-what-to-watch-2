@@ -1,7 +1,7 @@
 import {Film} from '../../models/models';
 import {Logo} from '../../components/logo/logo';
-import {UserBlock} from '../../components/user-block/user-block';
 import {FilmsList} from '../../components/films-list/films-list';
+import {Header} from '../../components/header/header';
 
 
 type MyListProps = {
@@ -11,12 +11,11 @@ type MyListProps = {
 export function MyList({films}: MyListProps): JSX.Element {
   return (
     <div className='user-page'>
-      <header className='page-header user-page__head'>
-        <Logo/>
+
+      <Header className={'user-page__head'}>
         <h1 className='page-title user-page__title'>My list <span className='user-page__film-count'>{films.length}</span>
         </h1>
-        <UserBlock/>
-      </header>
+      </Header>
 
       <section className='catalog'>
         <h2 className='catalog__title visually-hidden'>Catalog</h2>

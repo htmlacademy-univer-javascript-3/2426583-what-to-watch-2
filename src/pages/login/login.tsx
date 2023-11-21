@@ -1,23 +1,47 @@
 import {Logo} from '../../components/logo/logo';
+import {ChangeEvent, FormEvent, useState} from 'react';
+import {useAppDispatch} from '../../hooks';
+import {loginAction} from '../../store/api-actions';
+import {Header} from '../../components/header/header';
 
 
 export function Login(): JSX.Element {
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
+
+  const dispatch = useAppDispatch();
+
+  function handleLoginChange(evt: ChangeEvent<HTMLInputElement>) {
+    setLogin(evt.target.value);
+  }
+
+  function handlePasswordChange(evt: ChangeEvent<HTMLInputElement>) {
+    setPassword(evt.target.value);
+  }
+
+  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+
+    dispatch(loginAction({
+      login: login,
+      password: password
+    }));
+  };
+
   return (
     <div className='user-page'>
-      <header className='page-header user-page__head'>
-        <Logo/>
-        <h1 className='page-title user-page__title'>Sign in</h1>
-      </header>
+
+      <Header className={'user-page__head'}/>
 
       <div className='sign-in user-page__content'>
-        <form action='#' className='sign-in__form'>
+        <form action='' className='sign-in__form' onSubmit={handleSubmit}>
           <div className='sign-in__fields'>
             <div className='sign-in__field'>
-              <input className='sign-in__input' type='email' placeholder='Email address' name='user-email' id='user-email'/>
+              <input className='sign-in__input' type='email' placeholder='Email address' name='login' id='user-email' onChange={handleLoginChange}/>
               <label className='sign-in__label visually-hidden' htmlFor='user-email'>Email address</label>
             </div>
             <div className='sign-in__field'>
-              <input className='sign-in__input' type='password' placeholder='Password' name='user-password' id='user-password'/>
+              <input className='sign-in__input' type='password' placeholder='Password' name='password' id='user-password' onChange={handlePasswordChange}/>
               <label className='sign-in__label visually-hidden' htmlFor='user-password'>Password</label>
             </div>
           </div>

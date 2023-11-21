@@ -1,6 +1,5 @@
 import './main.css';
 import {Logo} from '../../components/logo/logo';
-import {UserBlock} from '../../components/user-block/user-block';
 import {FilmsList} from '../../components/films-list/films-list';
 import {GenresList} from '../../components/genres-list/genres-list';
 import {FILMS} from '../../mocks/films';
@@ -10,6 +9,7 @@ import {State} from '../../models/state';
 import {useEffect, useState} from 'react';
 import {ShowMoreBtn} from './show-more-btn/show-more-btn';
 import {TailSpin} from 'react-loader-spinner';
+import {Header} from '../../components/header/header';
 
 const COUNT_OF_FILMS_SHOWN = 8;
 export function Main(): JSX.Element {
@@ -35,7 +35,7 @@ export function Main(): JSX.Element {
         color="#dfcf77"
         ariaLabel="tail-spin-loading"
         radius="1"
-        wrapperStyle={{'position': 'absolute', 'z-index' : '1000', 'top': '50%', 'left': '50%', 'margin-left': '-48px', 'margin-top': '-48px'}}
+        wrapperStyle={{'position': 'absolute', 'zIndex' : '1000', 'top': '50%', 'left': '50%', 'margin-left': '-48px', 'margin-top': '-48px'}}
         wrapperClass=""
         visible={isFilmsDataLoading}
       />
@@ -46,10 +46,7 @@ export function Main(): JSX.Element {
 
         <h1 className='visually-hidden'>WTW</h1>
 
-        <header className='page-header film-card__head'>
-          <Logo/>
-          <UserBlock/>
-        </header>
+        <Header className={'film-card__head'}/>
 
         <div className='film-card__wrap'>
           <div className='film-card__info'>
