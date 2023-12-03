@@ -5,10 +5,10 @@ import {AppRoute} from '../../const';
 import {ReviewForm} from '../../components/review-form/review-form';
 import {Header} from '../../components/header/header';
 import {useAppSelector} from '../../hooks';
-import {State} from '../../models/state';
+import {getFilm} from '../../store/film-process/film-process.selector';
 
 export function AddReview(): JSX.Element {
-  const film: FullFilm | null = useAppSelector((state: State) => state.film);
+  const film: FullFilm | null = useAppSelector(getFilm);
 
   if (!film) {
     return <Navigate to={`${AppRoute.NotFound}`} />;

@@ -3,6 +3,7 @@ import './film-card.css';
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../const';
 import {VideoPlayer} from '../video-player/video-player';
+import React from 'react';
 
 type FilmCardProps = {
   shortFilmInfo: Film;
@@ -11,7 +12,7 @@ type FilmCardProps = {
   isActive: boolean;
 }
 
-export function FilmCard({shortFilmInfo, onMouseEnter, onMouseLeave, isActive}: FilmCardProps): JSX.Element {
+function FilmCard({shortFilmInfo, onMouseEnter, onMouseLeave, isActive}: FilmCardProps): JSX.Element {
   return (
     <article className="small-film-card catalog__films-card">
       <div
@@ -35,3 +36,5 @@ export function FilmCard({shortFilmInfo, onMouseEnter, onMouseLeave, isActive}: 
     </article>
   );
 }
+
+export default React.memo(FilmCard);

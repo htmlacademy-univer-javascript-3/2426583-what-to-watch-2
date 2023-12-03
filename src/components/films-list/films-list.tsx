@@ -1,6 +1,6 @@
 import {Film} from '../../models/models';
 import {useCallback, useState} from 'react';
-import {FilmCard} from '../film-card/film-card';
+import FilmCard from '../film-card/film-card';
 
 type FilmsListProps = {
   films: Film[];

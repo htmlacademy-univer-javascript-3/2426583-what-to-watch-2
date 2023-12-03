@@ -1,19 +1,20 @@
 import {Film, FullFilm} from '../../models/models';
 import './film.css';
-import {Logo} from '../../components/logo/logo';
 import {Link} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus, Tab} from '../../const';
 import {useCallback, useEffect, useState} from 'react';
-import {Tabs} from '../../components/tabs/tabs';
 import {Overview} from '../../components/tabs/overview-tab/overview';
 import {Details} from '../../components/tabs/details-tab/details';
 import {Reviews} from '../../components/tabs/reviews-tab/reviews';
 import {FilmsList} from '../../components/films-list/films-list';
 import {Header} from '../../components/header/header';
 import {useAppSelector} from '../../hooks';
-import {State} from '../../models/state';
-import {useLoadFilm} from '../../hooks/use-film-hook';
+import {useLoadFilm} from '../../hooks/use-load-film';
 import {LoadingScreen} from '../loading-screen/loading-screen';
+import {Footer} from '../../components/footer/footer';
+import {getAuthorizationStatus} from '../../store/user-process/user-process.selector';
+import {getFilm, getIsFilmsDataLoading, getSimilarFilms} from '../../store/film-process/film-process.selector';
+import Tabs from '../../components/tabs/tabs';
 
 const getComponentBySelectedTab = (selectedTab: Tab, film: FullFilm) => {
   switch (selectedTab) {
@@ -30,11 +31,11 @@ export function FilmPage(): JSX.Element {
   const [selectedTab, setSelectedTab] = useState(Tab.overview);
   const [moreLikeThisFilms, setMoreLikeThisFilms] = useState<Film[]>([]);
 
-  const isFilmLoading = useAppSelector((state) => state.isFilmsDataLoading);
-  const film: FullFilm | null = useAppSelector((state: State) => state.film);
-  const similarFilms: Film[] = useAppSelector((state: State) => state.similarFilms);
+  const isFilmLoading = useAppSelector(getIsFilmsDataLoading);
+  const film: FullFilm | null = useAppSelector(getFilm);
+  const similarFilms: Film[] = useAppSelector(getSimilarFilms);
 
-  const authorizationStatus = useAppSelector((state: State) => state.authorizationStatus);
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const isAuth = authorizationStatus === AuthorizationStatus.Auth;
 
   useLoadFilm();
@@ -117,13 +118,7 @@ export function FilmPage(): JSX.Element {
           <FilmsList films={moreLikeThisFilms}/>
         </section>
 
-        <footer className='page-footer'>
-          <Logo/>
-
-          <div className='copyright'>
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <Footer/>
       </div>
     </>
   );

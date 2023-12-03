@@ -1,9 +1,10 @@
 import {UserReview} from '../../../models/models';
 import {Review} from './review';
 import {useAppSelector} from '../../../hooks';
+import {getComments} from '../../../store/comment-process/comment-process.selector';
 
 export function Reviews(): JSX.Element {
-  const reviews = useAppSelector((state) => state.reviews);
+  const reviews = useAppSelector(getComments);
 
   return (
     <div className="film-card__reviews film-card__row">
