@@ -1,13 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Film} from '../../models/models';
+import {FavoriteFilm} from '../../models/models';
 import {AppRoute} from '../../const';
 import {VideoPlayer} from '../video-player/video-player';
 import './film-card.css';
 
 
 type FilmCardProps = {
-  shortFilmInfo: Film;
+  shortFilmInfo: FavoriteFilm;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
   isActive: boolean;

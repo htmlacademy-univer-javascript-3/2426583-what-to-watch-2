@@ -69,7 +69,7 @@ export type UserReview = {
 }
 
 export type AddCommentRequest = {
-  filmId: string;
+  filmId: number;
   comment: string;
   rating: number;
 }

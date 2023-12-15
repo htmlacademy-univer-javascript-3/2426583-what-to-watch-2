@@ -6,13 +6,13 @@ import {useAppDispatch} from '../../hooks';
 const RATING_VALUES = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 
 const defaultReview: AddCommentRequest = {
-  filmId: '',
+  filmId: 0,
   comment: '',
   rating: 0
 };
 
 type ReviewFormProps = {
-  filmId: string;
+  filmId: number;
 }
 
 export function ReviewForm({filmId} :ReviewFormProps): JSX.Element {

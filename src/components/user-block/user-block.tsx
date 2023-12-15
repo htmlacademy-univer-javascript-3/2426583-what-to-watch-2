@@ -20,7 +20,7 @@ export function UserBlock(): JSX.Element {
         </div>
       </li>
       <li className='user-block__item'>
-        <Link className='user-block__link' onClick={logout}>Sign out</Link>
+        <Link className='user-block__link' onClick={logout} to={''}>Sign out</Link>
       </li>
     </ul>
   );

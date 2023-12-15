@@ -8,7 +8,7 @@ import {changeFavoriteFilmStateAction, getFavoriteFilmsAction} from '../../store
 
 
 type FilmCardButtonsProps = {
-  children: JSX.Element | null;
+  children?: JSX.Element | null;
   filmId: number;
 }
 

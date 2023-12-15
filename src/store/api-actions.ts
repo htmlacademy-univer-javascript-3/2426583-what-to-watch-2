@@ -57,7 +57,7 @@ export const getFavoriteFilmsAction = createAsyncThunk<void, undefined, {
 }>(
   'films/getFavoriteFilms',
   async (_arg, { extra: api}) => {
-    const {data: favoriteFilms} = await api.get<FavoriteFilm[]>(`${APIRoute.Favorite}`);
+    const {data: favoriteFilms} = await api.get<FavoriteFilm[]>(APIRoute.Favorite);
     return favoriteFilms;
   },
 );
@@ -82,7 +82,7 @@ export const getPromoFilmAction = createAsyncThunk<void, undefined, {
 }>(
   'films/getPromoFilm',
   async (_arg, { extra: api}) => {
-    const {data: promoFilm} = await api.get<FavoriteFilm[]>(`${APIRoute.Promo}`);
+    const {data: promoFilm} = await api.get<FavoriteFilm[]>(APIRoute.Promo);
     return promoFilm;
   },
 );
