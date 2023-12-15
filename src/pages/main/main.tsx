@@ -1,31 +1,36 @@
 import './main.css';
-import {Logo} from '../../components/logo/logo';
 import {FilmsList} from '../../components/films-list/films-list';
 import {GenresList} from '../../components/genres-list/genres-list';
-import {FILMS} from '../../mocks/films';
 import {Film} from '../../models/models';
 import {useAppSelector} from '../../hooks';
-import {State} from '../../models/state';
-import {useEffect, useState} from 'react';
-import {ShowMoreBtn} from './show-more-btn/show-more-btn';
+import {useCallback, useEffect, useState} from 'react';
 import {TailSpin} from 'react-loader-spinner';
 import {Header} from '../../components/header/header';
+import {Footer} from '../../components/footer/footer';
+import {getFilms, getFilmsByGenre, getIsFilmsDataLoading} from '../../store/film-process/film-process.selector';
+import ShowMoreBtn from './show-more-btn/show-more-btn';
 
 const COUNT_OF_FILMS_SHOWN = 8;
 export function Main(): JSX.Element {
-  const filmsByGenre: Film[] = useAppSelector((state: State) => state.filmsByGenre);
-  const isFilmsDataLoading = useAppSelector((state) => state.isFilmsDataLoading);
-  const [maxShownFilms, setMaxShownFilms] = useState(8);
+  const isFilmsDataLoading = useAppSelector(getIsFilmsDataLoading);
+  const films: Film[] = useAppSelector(getFilms);
+  const [currentFilm, setCurrentFilm] = useState<Film | null>(null);
+
+  const filmsByGenre: Film[] = useAppSelector(getFilmsByGenre);
+  const [maxShownFilms, setMaxShownFilms] = useState<number>(8);
   const isShowMoreButtonVisible = maxShownFilms < filmsByGenre.length;
-  const firstFilm = FILMS[0];
+
+  useEffect(() => {
+    setCurrentFilm(films[0]);
+  }, [films]);
 
   useEffect(() => {
     setMaxShownFilms(COUNT_OF_FILMS_SHOWN);
   }, [filmsByGenre]);
 
-  const showMore = () => {
+  const showMore = useCallback(() => {
     setMaxShownFilms(maxShownFilms + COUNT_OF_FILMS_SHOWN);
-  };
+  }, [maxShownFilms]);
 
   return (
     <div>
@@ -41,7 +46,7 @@ export function Main(): JSX.Element {
       />
       <section className='film-card'>
         <div className='film-card__bg'>
-          <img src={firstFilm.previewImage} alt={firstFilm.name}/>
+          <img src={currentFilm?.previewImage} alt={currentFilm?.name}/>
         </div>
 
         <h1 className='visually-hidden'>WTW</h1>
@@ -51,14 +56,14 @@ export function Main(): JSX.Element {
         <div className='film-card__wrap'>
           <div className='film-card__info'>
             <div className='film-card__poster'>
-              <img src={firstFilm.previewImage} alt={firstFilm.name}/>
+              <img src={currentFilm?.previewImage} alt={currentFilm?.name}/>
             </div>
 
             <div className='film-card__desc'>
-              <h2 className='film-card__title'>{firstFilm.name}</h2>
+              <h2 className='film-card__title'>{currentFilm?.name}</h2>
               <p className='film-card__meta'>
-                <span className='film-card__genre'>{firstFilm.genre}</span>
-                <span className='film-card__year'>{firstFilm.year}</span>
+                <span className='film-card__genre'>{currentFilm?.genre}</span>
+                <span className='film-card__year'>{currentFilm?.year}</span>
               </p>
 
               <div className='film-card__buttons'>
@@ -92,13 +97,7 @@ export function Main(): JSX.Element {
           {isShowMoreButtonVisible && <ShowMoreBtn handleClick={showMore}></ShowMoreBtn>}
         </section>
 
-        <footer className='page-footer'>
-          <Logo/>
-
-          <div className='copyright'>
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <Footer/>
       </div>
     </div>
   );

@@ -1,11 +1,20 @@
 import {Link} from 'react-router-dom';
-import {AppRoute, USER_KEY_NAME} from '../../const';
-import {useAppSelector} from '../../hooks';
-import {State} from '../../models/state';
+import {USER_KEY_NAME} from '../../const';
+import {useAppDispatch, useAppSelector} from '../../hooks';
 import {UserData} from '../../models/user';
+import {getUser} from '../../store/user-process/user-process.selector';
+import {FormEvent} from 'react';
+import {logoutAction} from '../../store/api-actions';
 
 export function UserBlock(): JSX.Element {
-  const user: UserData | null = useAppSelector((state: State) => state.user);
+  const user: UserData | null = useAppSelector(getUser);
+  const dispatch = useAppDispatch();
+
+  const logout = (evt: FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+
+    dispatch(logoutAction());
+  };
 
   return (
     <ul className='user-block'>
@@ -15,7 +24,7 @@ export function UserBlock(): JSX.Element {
         </div>
       </li>
       <li className='user-block__item'>
-        <Link className='user-block__link' to={AppRoute.Login}>Sign out</Link>
+        <Link className='user-block__link' onClick={logout}>Sign out</Link>
       </li>
     </ul>
   );

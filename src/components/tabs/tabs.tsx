@@ -1,6 +1,7 @@
 import {Tab} from '../../const';
 import './tabs.css';
 import classNames from 'classnames';
+import React from 'react';
 
 type TabsProps = {
   onTabSelected: (tab: Tab) => void;
@@ -8,7 +9,7 @@ type TabsProps = {
 }
 
 const TABS = [Tab.overview, Tab.details, Tab.reviews] as const;
-export function Tabs({onTabSelected, selectedTab}: TabsProps): JSX.Element {
+function Tabs({onTabSelected, selectedTab}: TabsProps): JSX.Element {
   return (
     <div className="film-card__desc">
       <nav className="film-nav film-card__nav">
@@ -25,3 +26,5 @@ export function Tabs({onTabSelected, selectedTab}: TabsProps): JSX.Element {
     </div>
   );
 }
+
+export default React.memo(Tabs);

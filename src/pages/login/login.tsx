@@ -1,8 +1,8 @@
-import {Logo} from '../../components/logo/logo';
 import {ChangeEvent, FormEvent, useState} from 'react';
 import {useAppDispatch} from '../../hooks';
 import {loginAction} from '../../store/api-actions';
 import {Header} from '../../components/header/header';
+import {Footer} from '../../components/footer/footer';
 
 
 export function Login(): JSX.Element {
@@ -51,13 +51,7 @@ export function Login(): JSX.Element {
         </form>
       </div>
 
-      <footer className='page-footer'>
-        <Logo/>
-
-        <div className='copyright'>
-          <p>© 2019 What to watch Ltd.</p>
-        </div>
-      </footer>
+      <Footer/>
     </div>
   );
 }

@@ -1,16 +1,16 @@
 import {Logo} from '../logo/logo';
 import {UserBlock} from '../user-block/user-block';
 import {useAppSelector} from '../../hooks';
-import {State} from '../../models/state';
 import {AppRoute, AuthorizationStatus} from '../../const';
 import classnames from 'classnames';
+import {getAuthorizationStatus} from '../../store/user-process/user-process.selector';
 
 type HeaderProps = {
   children: JSX.Element | null;
   customClassName: string;
 }
 export function Header({ children , customClassName}: HeaderProps): JSX.Element {
-  const authorizationStatus: AuthorizationStatus = useAppSelector((state: State) => state.authorizationStatus);
+  const authorizationStatus: AuthorizationStatus = useAppSelector(getAuthorizationStatus);
   return (
     <header className={classnames('page-header', customClassName)}>
       <Logo/>

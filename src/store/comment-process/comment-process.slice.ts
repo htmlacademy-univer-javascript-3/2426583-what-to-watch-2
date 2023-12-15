@@ -1,0 +1,22 @@
+import {createSlice} from '@reduxjs/toolkit';
+import {CommentProcess} from '../../models/state';
+import {NameSpace} from '../../const';
+import {getFilmCommentsAction} from '../api-actions';
+
+const initialState: CommentProcess = {
+  comments: []
+};
+
+export const commentProcessSlice = createSlice({
+  name: NameSpace.Comment,
+  initialState,
+  reducers: {},
+  extraReducers(builder) {
+    builder
+      .addCase(getFilmCommentsAction.fulfilled, (state, action) => {
+        state.comments = action.payload;
+      });
+  }
+});
+
+export const {setFilmComments} = commentProcessSlice.actions;

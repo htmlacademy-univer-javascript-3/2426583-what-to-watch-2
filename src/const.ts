@@ -25,6 +25,7 @@ export const GENRE_FOR_ALL_FILMS = 'All films';
 export const enum APIRoute {
   Films = '/films',
   Login = '/login',
+  Logout = '/logout',
   Comments = '/comments'
 }
 
@@ -36,3 +37,9 @@ export enum ReduxStateStatus {
 }
 
 export const USER_KEY_NAME = 'what-to-watch-user';
+
+export enum NameSpace {
+  Film = 'FILM',
+  User = 'USER',
+  Comment = 'COMMENT'
+}
