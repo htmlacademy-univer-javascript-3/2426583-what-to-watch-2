@@ -11,8 +11,27 @@ export type Film = {
   reviews: UserReview[];
 }
 
+export type PromoFilm = {
+  id: number;
+  name: string;
+  posterImage: string;
+  backgroundImage: string;
+  videoLink: string;
+  genre: string;
+  released: number;
+  isFavorite: boolean;
+}
+
+export type FavoriteFilm = {
+  id: number;
+  name: string;
+  previewImage: string;
+  previewVideoLink: string;
+  genre: string;
+}
+
 export type FullFilm = {
-  id: string;
+  id: number;
   name: string;
   posterImage: string;
   backgroundImage: string;

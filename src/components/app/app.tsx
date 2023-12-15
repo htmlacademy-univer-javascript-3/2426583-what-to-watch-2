@@ -1,6 +1,5 @@
-import {Main} from '../../pages/main/main';
 import {Route, Routes} from 'react-router-dom';
-import Layout from '../layout/layout';
+import {Main} from '../../pages/main/main';
 import {MyList} from '../../pages/my-list/my-list';
 import {Login} from '../../pages/login/login';
 import {AddReview} from '../../pages/add-review/add-review';
@@ -8,11 +7,12 @@ import {Player} from '../../pages/player/player';
 import {AppRoute} from '../../const';
 import {FilmPage} from '../../pages/film/film';
 import {NotFound} from '../../pages/not-found/not-found';
-import ProtectedRoute from '../private-route/protected-route';
 import {useAppSelector} from '../../hooks';
-import HistoryRouter from '../history-router/history-router';
 import browserHistory from '../../browser-history';
 import {getAuthorizationStatus} from '../../store/user-process/user-process.selector';
+import Layout from '../layout/layout';
+import ProtectedRoute from '../private-route/protected-route';
+import HistoryRouter from '../history-router/history-router';
 
 export default function App(): JSX.Element {
   const authorizationStatus = useAppSelector(getAuthorizationStatus);

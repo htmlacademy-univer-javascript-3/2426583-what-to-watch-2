@@ -1,4 +1,3 @@
-import './add-review.css';
 import {Link, Navigate} from 'react-router-dom';
 import {FullFilm} from '../../models/models';
 import {AppRoute} from '../../const';
@@ -6,6 +5,7 @@ import {ReviewForm} from '../../components/review-form/review-form';
 import {Header} from '../../components/header/header';
 import {useAppSelector} from '../../hooks';
 import {getFilm} from '../../store/film-process/film-process.selector';
+import './add-review.css';
 
 export function AddReview(): JSX.Element {
   const film: FullFilm | null = useAppSelector(getFilm);

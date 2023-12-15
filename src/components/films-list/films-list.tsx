@@ -1,9 +1,9 @@
-import {Film} from '../../models/models';
 import {useCallback, useState} from 'react';
-import FilmCard from '../film-card/film-card';
+import {FavoriteFilm, Film} from '../../models/models';
+import {FilmCard} from '../film-card/film-card';
 
 type FilmsListProps = {
-  films: Film[];
+  films: FavoriteFilm[];
 }
 
 export function FilmsList({films}: FilmsListProps): JSX.Element {

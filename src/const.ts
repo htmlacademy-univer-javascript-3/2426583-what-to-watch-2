@@ -26,7 +26,9 @@ export const enum APIRoute {
   Films = '/films',
   Login = '/login',
   Logout = '/logout',
-  Comments = '/comments'
+  Comments = '/comments',
+  Favorite = '/favorite',
+  Promo = '/promo'
 }
 
 export enum ReduxStateStatus {
@@ -36,10 +38,15 @@ export enum ReduxStateStatus {
   Idle = 'idle'
 }
 
-export const USER_KEY_NAME = 'what-to-watch-user';
-
 export enum NameSpace {
   Film = 'FILM',
   User = 'USER',
-  Comment = 'COMMENT'
+  Comment = 'COMMENT',
+  Favorite = 'FAVORITE'
+}
+
+export const enum Time {
+  MinuteSeconds = 60,
+  HourSeconds = 3600,
+  HourMinutes = 60,
 }

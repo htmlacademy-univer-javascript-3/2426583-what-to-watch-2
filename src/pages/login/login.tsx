@@ -31,7 +31,7 @@ export function Login(): JSX.Element {
   return (
     <div className='user-page'>
 
-      <Header customClassName={'user-page__head'}></Header>
+      <Header customClassName={'user-page__head'}/>
 
       <div className='sign-in user-page__content'>
         <form action='' className='sign-in__form' onSubmit={handleSubmit}>
