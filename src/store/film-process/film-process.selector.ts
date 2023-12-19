@@ -1,6 +1,6 @@
 import {State} from '../../models/state';
 import {NameSpace} from '../../const';
-import {Film, FullFilm} from '../../models/models';
+import {Film, FullFilm, PromoFilm} from '../../models/models';
 
 export const getIsFilmsDataLoading = (state: Pick<State, NameSpace.Film>): boolean => state[NameSpace.Film].isFilmsDataLoading;
 
@@ -15,3 +15,5 @@ export const getGenres = (state: Pick<State, NameSpace.Film>): string[] => state
 export const getFilm = (state: Pick<State, NameSpace.Film>): FullFilm | null => state[NameSpace.Film].film;
 
 export const getSimilarFilms = (state: Pick<State, NameSpace.Film>): Film[] => state[NameSpace.Film].similarFilms;
+
+export const getPromoFilm = (state: Pick<State, NameSpace.Film>): PromoFilm | null => state[NameSpace.Film].promoFilm;

@@ -1,28 +1,34 @@
-import './main.css';
-import {FilmsList} from '../../components/films-list/films-list';
-import {GenresList} from '../../components/genres-list/genres-list';
-import {Film} from '../../models/models';
-import {useAppSelector} from '../../hooks';
 import {useCallback, useEffect, useState} from 'react';
 import {TailSpin} from 'react-loader-spinner';
+import {FilmsList} from '../../components/films-list/films-list';
+import {GenresList} from '../../components/genres-list/genres-list';
+import {Film, PromoFilm} from '../../models/models';
+import {useAppDispatch, useAppSelector} from '../../hooks';
 import {Header} from '../../components/header/header';
 import {Footer} from '../../components/footer/footer';
-import {getFilms, getFilmsByGenre, getIsFilmsDataLoading} from '../../store/film-process/film-process.selector';
-import ShowMoreBtn from './show-more-btn/show-more-btn';
+import {
+  getFilmsByGenre,
+  getIsFilmsDataLoading,
+  getPromoFilm
+} from '../../store/film-process/film-process.selector';
+import {FilmCardButtons} from '../../components/film-card-buttons/film-card-buttons';
+import {getPromoFilmAction} from '../../store/api-actions';
+import {ShowMoreBtn} from './show-more-btn/show-more-btn';
+import './main.css';
 
 const COUNT_OF_FILMS_SHOWN = 8;
 export function Main(): JSX.Element {
   const isFilmsDataLoading = useAppSelector(getIsFilmsDataLoading);
-  const films: Film[] = useAppSelector(getFilms);
-  const [currentFilm, setCurrentFilm] = useState<Film | null>(null);
+  const promoFilm: PromoFilm | null = useAppSelector(getPromoFilm);
+  const dispatch = useAppDispatch();
 
   const filmsByGenre: Film[] = useAppSelector(getFilmsByGenre);
-  const [maxShownFilms, setMaxShownFilms] = useState<number>(8);
+  const [maxShownFilms, setMaxShownFilms] = useState<number>(COUNT_OF_FILMS_SHOWN);
   const isShowMoreButtonVisible = maxShownFilms < filmsByGenre.length;
 
   useEffect(() => {
-    setCurrentFilm(films[0]);
-  }, [films]);
+    dispatch(getPromoFilmAction());
+  }, [dispatch]);
 
   useEffect(() => {
     setMaxShownFilms(COUNT_OF_FILMS_SHOWN);
@@ -46,41 +52,27 @@ export function Main(): JSX.Element {
       />
       <section className='film-card'>
         <div className='film-card__bg'>
-          <img src={currentFilm?.previewImage} alt={currentFilm?.name}/>
+          <img src={promoFilm?.backgroundImage} alt={promoFilm?.name}/>
         </div>
 
         <h1 className='visually-hidden'>WTW</h1>
 
-        <Header customClassName={'film-card__head'}></Header>
+        <Header customClassName={'film-card__head'}/>
 
         <div className='film-card__wrap'>
           <div className='film-card__info'>
             <div className='film-card__poster'>
-              <img src={currentFilm?.previewImage} alt={currentFilm?.name}/>
+              <img src={promoFilm?.posterImage} alt={promoFilm?.name}/>
             </div>
 
             <div className='film-card__desc'>
-              <h2 className='film-card__title'>{currentFilm?.name}</h2>
+              <h2 className='film-card__title'>{promoFilm?.name}</h2>
               <p className='film-card__meta'>
-                <span className='film-card__genre'>{currentFilm?.genre}</span>
-                <span className='film-card__year'>{currentFilm?.year}</span>
+                <span className='film-card__genre'>{promoFilm?.genre}</span>
+                <span className='film-card__year'>{promoFilm?.released}</span>
               </p>
 
-              <div className='film-card__buttons'>
-                <button className='btn btn--play film-card__button' type='button'>
-                  <svg viewBox='0 0 19 19' width='19' height='19'>
-                    <use xlinkHref='#play-s'/>
-                  </svg>
-                  <span>Play</span>
-                </button>
-                <button className='btn btn--list film-card__button' type='button'>
-                  <svg viewBox='0 0 19 20' width='19' height='20'>
-                    <use xlinkHref='#add'/>
-                  </svg>
-                  <span>My list</span>
-                  <span className='film-card__count'>{filmsByGenre.length}</span>
-                </button>
-              </div>
+              { promoFilm && <FilmCardButtons filmId={promoFilm?.id}></FilmCardButtons>}
             </div>
           </div>
         </div>

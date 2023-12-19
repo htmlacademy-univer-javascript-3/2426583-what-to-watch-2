@@ -1,8 +1,8 @@
+import {useCallback} from 'react';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {changeGenre, setFilmsByGenre} from '../../store/film-process/film-process.slice';
 import {getGenre, getGenres} from '../../store/film-process/film-process.selector';
-import {useCallback} from 'react';
-import GenreItem from './genre-item';
+import {GenreItem} from './genre-item';
 
 
 export function GenresList(): JSX.Element {

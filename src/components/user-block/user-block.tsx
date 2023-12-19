@@ -1,18 +1,14 @@
 import {Link} from 'react-router-dom';
-import {USER_KEY_NAME} from '../../const';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {UserData} from '../../models/user';
 import {getUser} from '../../store/user-process/user-process.selector';
-import {FormEvent} from 'react';
 import {logoutAction} from '../../store/api-actions';
 
 export function UserBlock(): JSX.Element {
   const user: UserData | null = useAppSelector(getUser);
   const dispatch = useAppDispatch();
 
-  const logout = (evt: FormEvent<HTMLFormElement>) => {
-    evt.preventDefault();
-
+  const logout = () => {
     dispatch(logoutAction());
   };
 
@@ -20,11 +16,11 @@ export function UserBlock(): JSX.Element {
     <ul className='user-block'>
       <li className='user-block__item'>
         <div className='user-block__avatar'>
-          <img src={(user !== null) ? user?.avatarUrl : (localStorage.getItem(USER_KEY_NAME) || '')} alt='User avatar' width='63' height='63'/>
+          <img src={(user !== null) ? user?.avatarUrl : ''} alt='User avatar' width='63' height='63'/>
         </div>
       </li>
       <li className='user-block__item'>
-        <Link className='user-block__link' onClick={logout}>Sign out</Link>
+        <Link className='user-block__link' onClick={logout} to={''}>Sign out</Link>
       </li>
     </ul>
   );

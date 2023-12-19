@@ -1,5 +1,6 @@
-import './video-player.css';
 import {useEffect, useRef} from 'react';
+import './video-player.css';
+
 
 type VideoPlayerProps = {
   poster: string;

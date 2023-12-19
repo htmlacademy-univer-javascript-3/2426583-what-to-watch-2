@@ -1,8 +1,7 @@
-import {Film, FullFilm} from '../../models/models';
-import './film.css';
-import {Link} from 'react-router-dom';
-import {AppRoute, AuthorizationStatus, Tab} from '../../const';
 import {useCallback, useEffect, useState} from 'react';
+import {Link} from 'react-router-dom';
+import {Film, FullFilm} from '../../models/models';
+import {AppRoute, AuthorizationStatus, Tab} from '../../const';
 import {Overview} from '../../components/tabs/overview-tab/overview';
 import {Details} from '../../components/tabs/details-tab/details';
 import {Reviews} from '../../components/tabs/reviews-tab/reviews';
@@ -10,11 +9,13 @@ import {FilmsList} from '../../components/films-list/films-list';
 import {Header} from '../../components/header/header';
 import {useAppSelector} from '../../hooks';
 import {useLoadFilm} from '../../hooks/use-load-film';
-import {LoadingScreen} from '../loading-screen/loading-screen';
 import {Footer} from '../../components/footer/footer';
 import {getAuthorizationStatus} from '../../store/user-process/user-process.selector';
 import {getFilm, getIsFilmsDataLoading, getSimilarFilms} from '../../store/film-process/film-process.selector';
-import Tabs from '../../components/tabs/tabs';
+import {FilmCardButtons} from '../../components/film-card-buttons/film-card-buttons';
+import {Tabs} from '../../components/tabs/tabs';
+import {LoadingScreen} from '../loading-screen/loading-screen';
+import './film.css';
 
 const getComponentBySelectedTab = (selectedTab: Tab, film: FullFilm) => {
   switch (selectedTab) {
@@ -61,7 +62,7 @@ export function FilmPage(): JSX.Element {
 
             <h1 className='visually-hidden'>WTW</h1>
 
-            <Header customClassName={'film-card__head'}></Header>
+            <Header customClassName={'film-card__head'}/>
 
             <div className='film-card__wrap'>
               <div className='film-card__desc'>
@@ -71,25 +72,12 @@ export function FilmPage(): JSX.Element {
                   <span className='film-card__year'>{film.released}</span>
                 </p>
 
-                <div className='film-card__buttons'>
-                  <button className='btn btn--play film-card__button' type='button'>
-                    <svg viewBox='0 0 19 19' width='19' height='19'>
-                      <use xlinkHref='#play-s'/>
-                    </svg>
-                    <span>Play</span>
-                  </button>
-                  <button className='btn btn--list film-card__button' type='button'>
-                    <svg viewBox='0 0 19 20' width='19' height='20'>
-                      <use xlinkHref='#add'/>
-                    </svg>
-                    <span>My list</span>
-                    <span className='film-card__count'>9</span>
-                  </button>
-                  {isAuth &&
+                <FilmCardButtons filmId={film.id}>
+                  {isAuth ?
                     <Link to={`${AppRoute.Film}/${film.id}${AppRoute.AddReview}`} className='btn film-card__button'>Add
                       review
-                    </Link>}
-                </div>
+                    </Link> : null}
+                </FilmCardButtons>
               </div>
             </div>
           </div>

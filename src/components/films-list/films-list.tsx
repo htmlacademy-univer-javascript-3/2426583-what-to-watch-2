@@ -1,15 +1,15 @@
-import {Film} from '../../models/models';
 import {useCallback, useState} from 'react';
-import FilmCard from '../film-card/film-card';
+import {FavoriteFilm} from '../../models/models';
+import {FilmCard} from '../film-card/film-card';
 
 type FilmsListProps = {
-  films: Film[];
+  films: FavoriteFilm[];
 }
 
 export function FilmsList({films}: FilmsListProps): JSX.Element {
   const [activeFilmId, setActiveFilmId] = useState<number>(-1);
 
-  const handleMouseEnter = useCallback((film: Film) => {
+  const handleMouseEnter = useCallback((film: FavoriteFilm) => {
     setActiveFilmId(film.id);
   }, []);
 
@@ -21,7 +21,7 @@ export function FilmsList({films}: FilmsListProps): JSX.Element {
     <div className='catalog__films-list'>
 
       {
-        films.map((shortFilmInfo: Film) => (
+        films.map((shortFilmInfo: FavoriteFilm) => (
           <FilmCard
             key={shortFilmInfo.id}
             shortFilmInfo={shortFilmInfo}

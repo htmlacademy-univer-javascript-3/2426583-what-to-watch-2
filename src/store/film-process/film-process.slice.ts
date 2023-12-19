@@ -1,7 +1,8 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {GENRE_FOR_ALL_FILMS, NameSpace} from '../../const';
-import {getFilmAction, getFilmsAction, getSimilarFilmsAction} from '../api-actions';
 import {FilmProcess} from '../../models/state';
+import {Film, FullFilm, PromoFilm} from '../../models/models';
+import {getFilmAction, getFilmsAction, getPromoFilmAction, getSimilarFilmsAction} from '../api-actions';
 
 const initialState: FilmProcess = {
   isFilmsDataLoading: false,
@@ -10,14 +11,16 @@ const initialState: FilmProcess = {
   films: [],
   genres: [],
   film: null,
-  similarFilms: []
+  similarFilms: [],
+  favoriteFilmsQuantity: 0,
+  promoFilm: null
 };
 
 export const filmProcessSlice = createSlice({
   name: NameSpace.Film,
   initialState,
   reducers: {
-    setFilms: (state, action) => {
+    setFilms: (state, action: PayloadAction<Film[]>) => {
       state.films = action.payload;
     },
     setGenres: (state) => {
@@ -25,7 +28,7 @@ export const filmProcessSlice = createSlice({
       state.films.forEach((film) => newListOfGenres.add(film.genre));
       state.genres = [GENRE_FOR_ALL_FILMS, ...newListOfGenres.values()];
     },
-    changeGenre: (state, action) => {
+    changeGenre: (state, action: PayloadAction<string>) => {
       state.genre = action.payload;
     },
     setFilmsByGenre: (state) => {
@@ -34,7 +37,13 @@ export const filmProcessSlice = createSlice({
       } else {
         state.filmsByGenre = state.films.filter((film) => film.genre === state.genre);
       }
-    }
+    },
+    setPromoFilmFavoriteState: (state, action: PayloadAction<boolean>) => {
+      state.film.isFavorite = action.payload;
+    },
+    setFilmFavoriteState: (state, action: PayloadAction<boolean>) => {
+      state.film.isFavorite = action.payload;
+    },
   },
   extraReducers(builder) {
     builder
@@ -50,17 +59,20 @@ export const filmProcessSlice = createSlice({
       .addCase(getFilmAction.pending, (state) => {
         state.isFilmsDataLoading = true;
       })
-      .addCase(getFilmAction.fulfilled, (state, action) => {
+      .addCase(getFilmAction.fulfilled, (state, action: PayloadAction<FullFilm>) => {
         state.film = action.payload;
         state.isFilmsDataLoading = false;
       })
       .addCase(getFilmAction.rejected, (state) => {
         state.isFilmsDataLoading = false;
       })
-      .addCase(getSimilarFilmsAction.fulfilled, (state, action) => {
+      .addCase(getSimilarFilmsAction.fulfilled, (state, action: PayloadAction<Film[]>) => {
         state.similarFilms = action.payload;
+      })
+      .addCase(getPromoFilmAction.fulfilled, (state, action: PayloadAction<PromoFilm>) => {
+        state.promoFilm = action.payload;
       });
   }
 });
 
-export const {setGenres, changeGenre, setFilmsByGenre, setFilms, setFilm, setSimilarFilms} = filmProcessSlice.actions;
+export const {setGenres, changeGenre, setFilmsByGenre, setFilms} = filmProcessSlice.actions;

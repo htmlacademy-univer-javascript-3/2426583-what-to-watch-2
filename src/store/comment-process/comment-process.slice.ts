@@ -1,6 +1,7 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {CommentProcess} from '../../models/state';
 import {NameSpace} from '../../const';
+import {UserReview} from '../../models/models';
 import {getFilmCommentsAction} from '../api-actions';
 
 const initialState: CommentProcess = {
@@ -13,10 +14,8 @@ export const commentProcessSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(getFilmCommentsAction.fulfilled, (state, action) => {
+      .addCase(getFilmCommentsAction.fulfilled, (state, action: PayloadAction<UserReview[]>) => {
         state.comments = action.payload;
       });
   }
 });
-
-export const {setFilmComments} = commentProcessSlice.actions;
