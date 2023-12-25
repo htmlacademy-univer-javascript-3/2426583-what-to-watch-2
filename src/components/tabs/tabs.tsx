@@ -16,7 +16,7 @@ export const Tabs = React.memo(({onTabSelected, selectedTab}: TabsProps): JSX.El
         {
           TABS.map((tab: Tab) => (
             <li key={tab} className={classNames({'film-nav__item' : true, 'film-nav__item--active' : (selectedTab === tab)})}>
-              <a onClick={() => onTabSelected(tab)} className="film-nav__link">{tab}</a>
+              <a onClick={() => onTabSelected(tab)} className="film-nav__link" data-testid='tab-value'>{tab}</a>
             </li>
           ))
         }

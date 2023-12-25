@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
-import {getFilmAction} from '../store/api-actions';
+import {getFilmAction} from '../store/film-process/film-process-api-actions';
 import {AppRoute, ReduxStateStatus} from '../const';
 import {useAppDispatch} from './index';
 

@@ -2,7 +2,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {CommentProcess} from '../../models/state';
 import {NameSpace} from '../../const';
 import {UserReview} from '../../models/models';
-import {getFilmCommentsAction} from '../api-actions';
+import {getFilmCommentsAction} from './comment-process-api-actions';
 
 const initialState: CommentProcess = {
   comments: []

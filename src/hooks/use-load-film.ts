@@ -1,7 +1,8 @@
 import {useEffect} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
-import {getFilmAction, getFilmCommentsAction, getSimilarFilmsAction} from '../store/api-actions';
+import {getFilmAction, getSimilarFilmsAction} from '../store/film-process/film-process-api-actions';
 import {AppRoute, ReduxStateStatus} from '../const';
+import {getFilmCommentsAction} from '../store/comment-process/comment-process-api-actions';
 import {useAppDispatch} from './index';
 
 

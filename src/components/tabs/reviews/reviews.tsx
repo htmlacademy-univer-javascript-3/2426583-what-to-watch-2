@@ -1,6 +1,6 @@
 import {UserReview} from '../../../models/models';
 import {useAppSelector} from '../../../hooks';
-import {getComments} from '../../../store/comment-process/comment-process.selector';
+import {getComments} from '../../../store/comment-process/comment-process.selectors';
 import {Review} from './review';
 
 export function Reviews(): JSX.Element {
@@ -11,14 +11,14 @@ export function Reviews(): JSX.Element {
       <div className="film-card__reviews-col">
         {
           reviews.slice(0, Math.floor(reviews.length / 2)).map((review: UserReview) => (
-            <Review key={review.id} review={review}/>
+            <Review key={review.id} review={review} data-testid="review"/>
           ))
         }
       </div>
       <div className="film-card__reviews-col">
         {
           reviews.slice(Math.floor(reviews.length / 2), reviews.length).map((review: UserReview) => (
-            <Review key={review.id} review={review}/>
+            <Review key={review.id} review={review} data-testid="review"/>
           ))
         }
       </div>

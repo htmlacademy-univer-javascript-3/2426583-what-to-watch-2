@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import {useAppSelector} from '../../hooks';
 import {AppRoute, AuthorizationStatus} from '../../const';
-import {getAuthorizationStatus} from '../../store/user-process/user-process.selector';
+import {getAuthorizationStatus} from '../../store/user-process/user-process.selectors';
 import {Logo} from '../logo/logo';
 import {UserBlock} from '../user-block/user-block';
 

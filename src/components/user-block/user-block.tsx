@@ -1,8 +1,8 @@
 import {Link} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {UserData} from '../../models/user';
-import {getUser} from '../../store/user-process/user-process.selector';
-import {logoutAction} from '../../store/api-actions';
+import {getUser} from '../../store/user-process/user-process.selectors';
+import {logoutAction} from '../../store/user-process/user-process-api-actions';
 
 export function UserBlock(): JSX.Element {
   const user: UserData | null = useAppSelector(getUser);

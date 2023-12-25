@@ -3,7 +3,7 @@ import {AuthorizationStatus, NameSpace} from '../../const';
 import {UserProcess} from '../../models/state';
 import {getToken} from '../../services/token';
 import {UserData} from '../../models/user';
-import {checkAuthAction, loginAction, logoutAction} from '../api-actions';
+import {checkAuthAction, loginAction, logoutAction} from './user-process-api-actions';
 
 const initialState: UserProcess = {
   authorizationStatus: (getToken() !== '') ? AuthorizationStatus.Auth : AuthorizationStatus.Unknown,

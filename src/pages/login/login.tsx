@@ -1,8 +1,8 @@
 import {ChangeEvent, FormEvent, useState} from 'react';
 import {useAppDispatch} from '../../hooks';
-import {loginAction} from '../../store/api-actions';
 import {Header} from '../../components/header/header';
 import {Footer} from '../../components/footer/footer';
+import {loginAction} from '../../store/user-process/user-process-api-actions';
 
 
 export function Login(): JSX.Element {

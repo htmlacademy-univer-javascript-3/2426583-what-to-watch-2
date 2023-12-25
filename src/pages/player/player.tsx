@@ -3,7 +3,7 @@ import {FullFilm} from '../../models/models';
 import {useLoadFilmPlayer} from '../../hooks/use-load-film-player';
 import {useAppSelector} from '../../hooks';
 import {AppRoute} from '../../const';
-import {getFilm, getIsFilmsDataLoading} from '../../store/film-process/film-process.selector';
+import {getFilm, getIsFilmsDataLoading} from '../../store/film-process/film-process.selectors';
 import {LoadingScreen} from '../loading-screen/loading-screen';
 import {formatDuration} from './player.utils';
 import {Link} from 'react-router-dom';

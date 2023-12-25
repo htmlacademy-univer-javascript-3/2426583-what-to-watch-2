@@ -1,14 +1,14 @@
 import {store} from '../store';
 import {AuthorizationStatus} from '../const';
 import {UserData} from './user';
-import {FavoriteFilm, Film, FullFilm, PromoFilm, UserReview} from './models';
+import {Film, Film, FullFilm, PromoFilm, UserReview} from './models';
 
 export type CommentProcess = {
   comments: UserReview[];
 }
 
 export type FavoriteProcess = {
-  favoriteFilms: FavoriteFilm[];
+  favoriteFilms: Film[];
 }
 
 export type UserProcess = {
@@ -24,7 +24,6 @@ export type FilmProcess = {
   genres: string[];
   film: FullFilm | null;
   similarFilms: Film[];
-  favoriteFilmsQuantity: number;
   promoFilm: PromoFilm | null;
 };
 
