@@ -10,9 +10,9 @@ import {
   getFilmsByGenre,
   getIsFilmsDataLoading,
   getPromoFilm
-} from '../../store/film-process/film-process.selector';
+} from '../../store/film-process/film-process.selectors';
 import {FilmCardButtons} from '../../components/film-card-buttons/film-card-buttons';
-import {getPromoFilmAction} from '../../store/api-actions';
+import {getPromoFilmAction} from '../../store/film-process/film-process-api-actions';
 import {ShowMoreBtn} from './show-more-btn/show-more-btn';
 import './main.css';
 

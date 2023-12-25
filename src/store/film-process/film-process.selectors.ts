@@ -8,8 +8,6 @@ export const getGenre = (state: Pick<State, NameSpace.Film>): string => state[Na
 
 export const getFilmsByGenre = (state: Pick<State, NameSpace.Film>): Film[] => state[NameSpace.Film].filmsByGenre;
 
-export const getFilms = (state: Pick<State, NameSpace.Film>): Film[] => state[NameSpace.Film].films;
-
 export const getGenres = (state: Pick<State, NameSpace.Film>): string[] => state[NameSpace.Film].genres;
 
 export const getFilm = (state: Pick<State, NameSpace.Film>): FullFilm | null => state[NameSpace.Film].film;

@@ -1,18 +1,5 @@
-export type Film = {
-  id: number;
-  name: string;
-  previewImage: string;
-  previewVideoLink: string;
-  genre: string;
-  runTime: number;
-  year: number;
-  rating: FilmRating;
-  description: FilmDescription;
-  reviews: UserReview[];
-}
-
 export type PromoFilm = {
-  id: number;
+  id: string;
   name: string;
   posterImage: string;
   backgroundImage: string;
@@ -22,8 +9,8 @@ export type PromoFilm = {
   isFavorite: boolean;
 }
 
-export type FavoriteFilm = {
-  id: number;
+export type Film = {
+  id: string;
   name: string;
   previewImage: string;
   previewVideoLink: string;
@@ -31,7 +18,7 @@ export type FavoriteFilm = {
 }
 
 export type FullFilm = {
-  id: number;
+  id: string;
   name: string;
   posterImage: string;
   backgroundImage: string;
@@ -69,7 +56,7 @@ export type UserReview = {
 }
 
 export type AddCommentRequest = {
-  filmId: number;
+  filmId: string;
   comment: string;
   rating: number;
 }

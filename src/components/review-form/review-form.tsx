@@ -1,7 +1,7 @@
 import {ChangeEvent, FormEvent, Fragment, useState} from 'react';
 import {AddCommentRequest} from '../../models/models';
-import {addCommentAction} from '../../store/api-actions';
 import {useAppDispatch} from '../../hooks';
+import {addCommentAction} from '../../store/comment-process/comment-process-api-actions';
 
 const RATING_VALUES = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 

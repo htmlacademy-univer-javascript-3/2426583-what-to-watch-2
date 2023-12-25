@@ -1,15 +1,18 @@
 import {useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from '../../hooks';
-import {getAuthorizationStatus} from '../../store/user-process/user-process.selector';
+import {getAuthorizationStatus} from '../../store/user-process/user-process.selectors';
 import {AppRoute, AuthorizationStatus} from '../../const';
-import {getFavoriteFilms} from '../../store/favorite-process/favorite-process.selector';
-import {changeFavoriteFilmStateAction, getFavoriteFilmsAction} from '../../store/api-actions';
+import {getFavoriteFilms} from '../../store/favorite-process/favorite-process.selectors';
+import {
+  changeFavoriteFilmStateAction,
+  getFavoriteFilmsAction
+} from '../../store/favorite-process/favorite-process-api-actions';
 
 
 type FilmCardButtonsProps = {
   children?: JSX.Element | null;
-  filmId: number;
+  filmId: string;
 }
 
 export function FilmCardButtons({children, filmId}: FilmCardButtonsProps): JSX.Element {

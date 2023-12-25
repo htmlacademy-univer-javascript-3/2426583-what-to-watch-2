@@ -9,7 +9,7 @@ import {FilmPage} from '../../pages/film/film';
 import {NotFound} from '../../pages/not-found/not-found';
 import {useAppSelector} from '../../hooks';
 import browserHistory from '../../browser-history';
-import {getAuthorizationStatus} from '../../store/user-process/user-process.selector';
+import {getAuthorizationStatus} from '../../store/user-process/user-process.selectors';
 import Layout from '../layout/layout';
 import ProtectedRoute from '../private-route/protected-route';
 import HistoryRouter from '../history-router/history-router';

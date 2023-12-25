@@ -1,7 +1,7 @@
 import {useCallback} from 'react';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {changeGenre, setFilmsByGenre} from '../../store/film-process/film-process.slice';
-import {getGenre, getGenres} from '../../store/film-process/film-process.selector';
+import {getGenre, getGenres} from '../../store/film-process/film-process.selectors';
 import {GenreItem} from './genre-item';
 
 
@@ -12,7 +12,7 @@ export function GenresList(): JSX.Element {
 
   const handleSetGenre = useCallback((selectedGenre: string) => {
     dispatch(changeGenre(selectedGenre));
-    dispatch(setFilmsByGenre());
+    dispatch(setFilmsByGenre(selectedGenre));
   }, [dispatch]);
 
   return (

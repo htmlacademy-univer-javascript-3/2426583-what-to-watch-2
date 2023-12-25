@@ -4,7 +4,7 @@ import {AppRoute} from '../../const';
 import {ReviewForm} from '../../components/review-form/review-form';
 import {Header} from '../../components/header/header';
 import {useAppSelector} from '../../hooks';
-import {getFilm} from '../../store/film-process/film-process.selector';
+import {getFilm} from '../../store/film-process/film-process.selectors';
 import './add-review.css';
 
 export function AddReview(): JSX.Element {
