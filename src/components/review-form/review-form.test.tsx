@@ -15,7 +15,7 @@ describe('Component: Review Form', () => {
   it('should render correctly', () => {
     const expectedRatingCount = 10;
     const postText = 'Post';
-    const { withStoreComponent } = withStore(<ReviewForm />, initialState);
+    const { withStoreComponent } = withStore(<ReviewForm filmId=''/>, initialState);
     const preparedComponent = withHistory(withStoreComponent);
 
     render(preparedComponent);
@@ -27,7 +27,7 @@ describe('Component: Review Form', () => {
   it('should render correctly when user enter rating and post', async () => {
     const postElementTestId = 'postElement';
     const expectedPostValue = 'Test Test Test';
-    const { withStoreComponent } = withStore(<ReviewForm />, initialState);
+    const { withStoreComponent } = withStore(<ReviewForm filmId=''/>, initialState);
     const preparedComponent = withHistory(withStoreComponent);
 
     render(preparedComponent);
@@ -47,7 +47,7 @@ describe('Component: Review Form', () => {
   it('should disable submit button when rating and review text are not set correctly', async () => {
     const postElementTestId = 'postElement';
     const expectedPostValue = 'Short Text';
-    const { withStoreComponent } = withStore(<ReviewForm />, initialState);
+    const { withStoreComponent } = withStore(<ReviewForm filmId=''/>, initialState);
     const preparedComponent = withHistory(withStoreComponent);
 
     render(preparedComponent);
@@ -69,7 +69,7 @@ describe('Component: Review Form', () => {
   it('should enable submit button when rating and review text are set correctly', async () => {
     const postElementTestId = 'postElement';
     const expectedPostValue = 'Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text';
-    const { withStoreComponent } = withStore(<ReviewForm />, initialState);
+    const { withStoreComponent } = withStore(<ReviewForm filmId=''/>, initialState);
     const preparedComponent = withHistory(withStoreComponent);
 
     render(preparedComponent);

@@ -15,7 +15,7 @@ describe('Component: Header', () => {
   it('should render Sign in text, if user is not authorised', () => {
     const signInText = 'Sign in';
     const componentWithHistory = withHistory(
-      <Header/>,
+      <Header customClassName=''/>,
       mockHistory
     );
     const {withStoreComponent} = withStore(componentWithHistory, makeFakeStore({
@@ -33,7 +33,7 @@ describe('Component: Header', () => {
   it('should render User Block, if user is authorised', () => {
     const altText = 'User avatar';
     const componentWithHistory = withHistory(
-      <Header/>,
+      <Header customClassName=''/>,
       mockHistory
     );
     const {withStoreComponent} = withStore(componentWithHistory, makeFakeStore({

@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import React from 'react';
 import {withHistory} from '../../utils/mock-component';
 import {Footer} from './footer';
 
