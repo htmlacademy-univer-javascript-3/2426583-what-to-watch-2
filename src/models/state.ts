@@ -1,7 +1,7 @@
 import {store} from '../store';
 import {AuthorizationStatus} from '../const';
 import {UserData} from './user';
-import {Film, Film, FullFilm, PromoFilm, UserReview} from './models';
+import {Film, FullFilm, PromoFilm, UserReview} from './models';
 
 export type CommentProcess = {
   comments: UserReview[];

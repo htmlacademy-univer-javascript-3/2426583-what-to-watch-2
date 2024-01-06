@@ -7,7 +7,7 @@ type VideoPlayerProps = {
   src: string;
 }
 
-const startVideoTimeout = 1000;
+const START_VIDEO_TIMEOUT = 1000;
 export function VideoPlayer({poster, src}: VideoPlayerProps): JSX.Element {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -16,7 +16,7 @@ export function VideoPlayer({poster, src}: VideoPlayerProps): JSX.Element {
       if (videoRef.current) {
         videoRef.current.play();
       }
-    }, startVideoTimeout);
+    }, START_VIDEO_TIMEOUT);
   }, []);
 
   return (
@@ -26,6 +26,7 @@ export function VideoPlayer({poster, src}: VideoPlayerProps): JSX.Element {
       src={src}
       muted
       className="video-player"
+      data-testid='video-player'
     />
   );
 }

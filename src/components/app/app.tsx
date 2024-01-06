@@ -1,24 +1,23 @@
 import {Route, Routes} from 'react-router-dom';
+import {HelmetProvider} from 'react-helmet-async';
 import {Main} from '../../pages/main/main';
 import {MyList} from '../../pages/my-list/my-list';
 import {Login} from '../../pages/login/login';
 import {AddReview} from '../../pages/add-review/add-review';
 import {Player} from '../../pages/player/player';
 import {AppRoute} from '../../const';
-import {FilmPage} from '../../pages/film/film';
+import {FilmPage} from '../../pages/film-page/film-page';
 import {NotFound} from '../../pages/not-found/not-found';
 import {useAppSelector} from '../../hooks';
-import browserHistory from '../../browser-history';
 import {getAuthorizationStatus} from '../../store/user-process/user-process.selectors';
 import Layout from '../layout/layout';
-import ProtectedRoute from '../private-route/protected-route';
-import HistoryRouter from '../history-router/history-router';
+import ProtectedRoute from '../private-route/private-route';
 
 export default function App(): JSX.Element {
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
   return (
-    <HistoryRouter history={browserHistory}>
+    <HelmetProvider>
       <Routes>
         <Route path={AppRoute.Main} element={<Layout/>}>
           <Route index element={<Main/>}/>
@@ -32,6 +31,6 @@ export default function App(): JSX.Element {
         </Route>
         <Route path='*' element={<NotFound/>}/>
       </Routes>
-    </HistoryRouter>
+    </HelmetProvider>
   );
 }

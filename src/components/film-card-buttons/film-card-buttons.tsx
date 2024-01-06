@@ -8,6 +8,7 @@ import {
   changeFavoriteFilmStateAction,
   getFavoriteFilmsAction
 } from '../../store/favorite-process/favorite-process-api-actions';
+import {Icon} from '../icon/icon';
 
 
 type FilmCardButtonsProps = {
@@ -34,22 +35,16 @@ export function FilmCardButtons({children, filmId}: FilmCardButtonsProps): JSX.E
     <div className='film-card__buttons'>
 
       <Link className='btn btn--play film-card__button' to={`${AppRoute.Player}/${filmId}`}>
-        <svg viewBox='0 0 19 19' width='19' height='19'>
-          <use xlinkHref='#play-s'/>
-        </svg>
+        <Icon width='19' height='19' xlinkHref='#play-s'/>
         <span>Play</span>
       </Link>
 
       {isAuth &&
-        <button className='btn btn--list film-card__button' type='button'>
+        <button className='btn btn--list film-card__button' type='button' data-testid={isFavoriteFilm ? 'inListIconElement' : 'addIconElement'}>
           {isFavoriteFilm &&
-            <svg viewBox="0 0 18 14" width="18" height="14">
-              <use xlinkHref="#in-list"></use>
-            </svg>}
+            <Icon width='18' height='14' xlinkHref='#in-list'/>}
           {!isFavoriteFilm &&
-            <svg viewBox='0 0 19 20' width='19' height='20'>
-              <use xlinkHref='#add'/>
-            </svg>}
+            <Icon width='19' height='20' xlinkHref='#add'/>}
           <span onClick={changeFavoriteFilmsState}>My list</span>
           <span className='film-card__count'>{favoriteFilms.length}</span>
         </button>}
