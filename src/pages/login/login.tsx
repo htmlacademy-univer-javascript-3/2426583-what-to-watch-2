@@ -1,11 +1,17 @@
 import {ChangeEvent, FormEvent, useState} from 'react';
-import {useAppDispatch} from '../../hooks';
+import {Navigate} from 'react-router-dom';
+import {useAppDispatch, useAppSelector} from '../../hooks';
 import {Header} from '../../components/header/header';
 import {Footer} from '../../components/footer/footer';
 import {loginAction} from '../../store/user-process/user-process-api-actions';
+import {errorHandle} from '../../services/error-handle';
+import {AuthorizationStatus} from '../../const';
+import {getAuthorizationStatus} from '../../store/user-process/user-process.selectors';
 
+const EMAIL_PATTERN = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
 export function Login(): JSX.Element {
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
 
@@ -22,11 +28,23 @@ export function Login(): JSX.Element {
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
 
-    dispatch(loginAction({
-      login: login,
-      password: password
-    }));
+    if (!EMAIL_PATTERN.test(login)) {
+      return errorHandle('Please enter a valid email address');
+    }
+
+    if (/[a-z]/i.test(password) && /[0-9]/.test(password)) {
+      dispatch(loginAction({
+        login: login,
+        password: password
+      }));
+    } else {
+      errorHandle('Passwords must contain: a minimum of 1 letter and a minimum of 1 numeric character');
+    }
   };
+
+  if (authorizationStatus === AuthorizationStatus.Auth) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <div className='user-page'>

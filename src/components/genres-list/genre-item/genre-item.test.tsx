@@ -1,5 +1,5 @@
 import {fireEvent, render, screen} from '@testing-library/react';
-import {FAKE_FILMS} from '../../utils/mocks';
+import {FAKE_FILMS} from '../../../utils/mocks';
 import {GenreItem} from './genre-item';
 
 describe('Genre Item Component', () => {

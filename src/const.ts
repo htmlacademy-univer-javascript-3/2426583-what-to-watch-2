@@ -15,9 +15,9 @@ export const enum AuthorizationStatus {
 }
 
 export const enum Tab {
-  details = 'Details',
-  overview = 'Overview',
-  reviews = 'Reviews'
+  Details = 'Details',
+  Overview = 'Overview',
+  Reviews = 'Reviews'
 }
 
 export const GENRE_FOR_ALL_FILMS = 'All films';

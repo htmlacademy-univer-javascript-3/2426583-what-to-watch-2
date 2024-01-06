@@ -1,5 +1,5 @@
 import {format} from 'date-fns';
-import {UserReview} from '../../../models/models';
+import {UserReview} from '../../../../models/models';
 
 type ReviewProps = {
   review: UserReview;

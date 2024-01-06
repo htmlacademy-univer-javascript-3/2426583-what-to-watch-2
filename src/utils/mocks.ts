@@ -4,7 +4,7 @@ import {Film, FullFilm, PromoFilm, UserReview} from '../models/models';
 import {State} from '../models/state';
 import {createAPI} from '../services/api';
 import {UserData} from '../models/user';
-import {AuthorizationStatus, GENRE_FOR_ALL_FILMS} from '../const';
+import {AuthorizationStatus, GENRE_FOR_ALL_FILMS, NameSpace} from '../const';
 
 export type AppThunkDispatch = ThunkDispatch<State, ReturnType<typeof createAPI>, Action>;
 
@@ -129,9 +129,9 @@ export const getFakeSimilarFilms = (genre: string): Film[] => FAKE_FILMS.filter(
 export const extractActionsTypes = (actions: Action<string>[]) => actions.map(({ type }) => type);
 
 export const makeFakeStore = (initialState?: Partial<State>): State => ({
-  COMMENT: { comments: [FAKE_COMMENT] },
-  FAVORITE: { favoriteFilms: FAKE_FILMS },
-  FILM: {
+  [NameSpace.Comment]: { comments: [FAKE_COMMENT] },
+  [NameSpace.Favorite]: { favoriteFilms: FAKE_FILMS },
+  [NameSpace.Film]: {
     isFilmsDataLoading: false,
     genre: GENRE_FOR_ALL_FILMS,
     filmsByGenre: FAKE_FILMS,
@@ -139,9 +139,9 @@ export const makeFakeStore = (initialState?: Partial<State>): State => ({
     genres: FAKE_FILMS_GENRES,
     film: FAKE_FULL_FILMS[0],
     similarFilms: getFakeSimilarFilms(FAKE_FULL_FILMS[0].genre),
-    promoFilm: FAKE_FILMS[0]
+    promoFilm: FAKE_PROMO_FILM
   },
-  USER: {
+  [NameSpace.User]: {
     authorizationStatus: AuthorizationStatus.NoAuth,
     user: null
   },

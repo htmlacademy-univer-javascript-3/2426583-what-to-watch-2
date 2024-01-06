@@ -27,7 +27,7 @@ describe('Component: Header', () => {
 
     render(withStoreComponent);
 
-    expect(screen.queryByText(signInText)).not.toBeInTheDocument();
+    expect(screen.queryByText(signInText)).toBeInTheDocument();
   });
 
   it('should render User Block, if user is authorised', () => {

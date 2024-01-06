@@ -11,7 +11,8 @@ export function useLoadFilm(): void {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (id) {
+    let isMounted = true;
+    if (isMounted && id) {
       dispatch(getFilmAction(id))
         .then((res) => {
           if (res?.meta.requestStatus === ReduxStateStatus.Rejected) {
@@ -21,5 +22,8 @@ export function useLoadFilm(): void {
       dispatch(getSimilarFilmsAction(id));
       dispatch(getFilmCommentsAction(id));
     }
+    return () => {
+      isMounted = false;
+    };
   }, [dispatch, navigate, id]);
 }

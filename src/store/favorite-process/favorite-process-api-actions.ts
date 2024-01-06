@@ -9,7 +9,7 @@ export const getFavoriteFilmsAction = createAsyncThunk<Film[], undefined, {
   state: State;
   extra: AxiosInstance;
 }>(
-  'films/getFavoriteFilms',
+  'favorite/getFavoriteFilms',
   async (_arg, { extra: api}) => {
     const {data: favoriteFilms} = await api.get<Film[]>(APIRoute.Favorite);
     return favoriteFilms;
@@ -21,7 +21,7 @@ export const changeFavoriteFilmStateAction = createAsyncThunk<FullFilm, {filmId:
   state: State;
   extra: AxiosInstance;
 }>(
-  'films/changeFavoriteFilmsState',
+  'favorite/changeFavoriteFilmsState',
   async (arg: {filmId: string; status: number}, { dispatch, extra: api}) => {
     const {data: updatedFilm} = await api.post<FullFilm>(`${APIRoute.Favorite}/${arg.filmId}/${arg.status}`);
     dispatch(getFavoriteFilmsAction());

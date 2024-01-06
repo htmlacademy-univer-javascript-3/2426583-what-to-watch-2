@@ -1,7 +1,7 @@
 import {UserReview} from '../../../models/models';
 import {useAppSelector} from '../../../hooks';
 import {getComments} from '../../../store/comment-process/comment-process.selectors';
-import {Review} from './review';
+import {Review} from './review/review';
 
 export function Reviews(): JSX.Element {
   const reviews = useAppSelector(getComments);

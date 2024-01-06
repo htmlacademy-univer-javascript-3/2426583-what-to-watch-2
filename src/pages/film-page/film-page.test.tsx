@@ -3,10 +3,9 @@ import userEvent from '@testing-library/user-event';
 import {render, screen, waitFor} from '@testing-library/react';
 import {Route, Routes} from 'react-router';
 import {
-  FAKE_COMMENT,
   FAKE_FILMS,
   FAKE_FILMS_GENRES,
-  FAKE_FULL_FILMS,
+  FAKE_FULL_FILMS, FAKE_PROMO_FILM,
   FAKE_USER, getFakeSimilarFilms,
   makeFakeStore
 } from '../../utils/mocks';
@@ -60,9 +59,7 @@ describe('Component: Film Page', () => {
   });
 
   it('should render loading spinner while fetching film-page data', () => {
-    const fakeStore = {
-      COMMENT: { comments: [FAKE_COMMENT] },
-      FAVORITE: { favoriteFilms: FAKE_FILMS },
+    const {withStoreComponent} = withStore(<FilmPage/>, makeFakeStore({
       FILM: {
         isFilmsDataLoading: true,
         genre: GENRE_FOR_ALL_FILMS,
@@ -71,14 +68,9 @@ describe('Component: Film Page', () => {
         genres: FAKE_FILMS_GENRES,
         film: null,
         similarFilms: getFakeSimilarFilms(FAKE_FULL_FILMS[0].genre),
-        promoFilm: FAKE_FILMS[0]
-      },
-      USER: {
-        authorizationStatus: AuthorizationStatus.NoAuth,
-        user: null
+        promoFilm: FAKE_PROMO_FILM
       }
-    };
-    const {withStoreComponent} = withStore(<FilmPage/>, fakeStore);
+    }));
     const preparedComponent = withHistory(withStoreComponent);
 
     render(preparedComponent);

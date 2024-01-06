@@ -4,13 +4,13 @@ import {Tabs} from './tabs';
 describe('Tabs Component', () => {
   it('should render tabs correctly', () => {
     const expectedCount = 3;
-    const overviewTab = Tab.overview;
-    const detailsTab = Tab.details;
-    const reviewsTab = Tab.reviews;
+    const overviewTab = Tab.Overview;
+    const detailsTab = Tab.Details;
+    const reviewsTab = Tab.Reviews;
     const tabValueTestId = 'tab-value';
     const onTabSelected = vi.fn();
 
-    render(<Tabs selectedTab={Tab.overview} onTabSelected={onTabSelected}/>);
+    render(<Tabs selectedTab={Tab.Overview} onTabSelected={onTabSelected}/>);
 
     expect(screen.getByText(overviewTab)).toBeInTheDocument();
     expect(screen.getByText(detailsTab)).toBeInTheDocument();

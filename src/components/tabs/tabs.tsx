@@ -8,7 +8,7 @@ type TabsProps = {
   selectedTab: Tab;
 }
 
-const TABS = [Tab.overview, Tab.details, Tab.reviews] as const;
+const TABS = [Tab.Overview, Tab.Details, Tab.Reviews] as const;
 export const Tabs = React.memo(({onTabSelected, selectedTab}: TabsProps): JSX.Element => (
   <div className="film-card__desc">
     <nav className="film-nav film-card__nav">
