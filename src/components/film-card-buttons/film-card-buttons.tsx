@@ -35,16 +35,16 @@ export function FilmCardButtons({children, filmId}: FilmCardButtonsProps): JSX.E
     <div className='film-card__buttons'>
 
       <Link className='btn btn--play film-card__button' to={`${AppRoute.Player}/${filmId}`}>
-        <Icon width='19' height='19' xlinkHref='#play-s'/>
+        <Icon width={19} height={19} xlinkHref='#play-s'/>
         <span>Play</span>
       </Link>
 
       {isAuth &&
         <button className='btn btn--list film-card__button' type='button' data-testid={isFavoriteFilm ? 'inListIconElement' : 'addIconElement'}>
           {isFavoriteFilm &&
-            <Icon width='18' height='14' xlinkHref='#in-list'/>}
+            <Icon width={18} height={14} xlinkHref='#in-list'/>}
           {!isFavoriteFilm &&
-            <Icon width='19' height='20' xlinkHref='#add'/>}
+            <Icon width={19} height={20} xlinkHref='#add'/>}
           <span onClick={changeFavoriteFilmsState}>My list</span>
           <span className='film-card__count'>{favoriteFilms.length}</span>
         </button>}

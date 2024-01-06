@@ -15,7 +15,7 @@ describe('Component: FilmCard', () => {
   });
 
   it('should render correctly', () => {
-    const { withStoreComponent } = withStore(<FilmCard shortFilmInfo={FAKE_FILMS[0]} />);
+    const { withStoreComponent } = withStore(<FilmCard shortFilmInfo={FAKE_FILMS[0]} isActive={false}/>);
     const filmNameElementTestId = 'filmNameElement';
     const preparedComponent = withHistory(withStoreComponent, mockHistory);
 
@@ -30,7 +30,7 @@ describe('Component: FilmCard', () => {
     const mockFilmComponent = <span>{expectedText}</span>;
     const componentWithHistory = withHistory(
       <Routes>
-        <Route path={AppRoute.Main} element={<FilmCard shortFilmInfo={FAKE_FILMS[0]}/>} />
+        <Route path={AppRoute.Main} element={<FilmCard shortFilmInfo={FAKE_FILMS[0]} isActive={false}/>} />
         <Route path={`${AppRoute.Film}/${FAKE_FILMS[0].id}`} element={mockFilmComponent} />
       </Routes>,
       mockHistory
@@ -55,7 +55,7 @@ describe('Component: FilmCard', () => {
 
   it('should render preview image when user mouse leave to card', () => {
     const videoElementTestId = 'imageElement';
-    const componentWithHistory = withHistory(<FilmCard shortFilmInfo={FAKE_FILMS[0]}/>);
+    const componentWithHistory = withHistory(<FilmCard shortFilmInfo={FAKE_FILMS[0]} isActive={false}/>);
     const {withStoreComponent} = withStore(componentWithHistory, {});
 
     render(withStoreComponent);

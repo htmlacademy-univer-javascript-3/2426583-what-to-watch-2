@@ -87,12 +87,12 @@ export function Player(): JSX.Element {
 
         <div className="player__controls-row">
           <button type="button" className="player__play" onClick={handlePlayIconClick} data-testid={isPlaying ? 'pauseButton' : 'playButton'}>
-            <Icon width='19' height='19' xlinkHref={isPlaying ? '#pause' : '#play-s'}/>
+            <Icon width={19} height={19} xlinkHref={isPlaying ? '#pause' : '#play-s'}/>
             <span>{isPlaying ? 'Pause' : 'Play'}</span>
           </button>
           <div className="player__name">{film?.name}</div>
           <button type="button" className="player__full-screen" onClick={handleFullscreenIconClick} data-testid='fullScreenButton'>
-            <Icon width='27' height='27' xlinkHref="#full-screen"/>
+            <Icon width={27} height={27} xlinkHref="#full-screen"/>
             <span>Full screen</span>
           </button>
         </div>
