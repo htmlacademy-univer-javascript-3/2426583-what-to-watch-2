@@ -97,7 +97,7 @@ describe('User process slice', () => {
     const result = userProcessSlice.reducer(
       undefined,
       loginAction.fulfilled(
-        FAKE_USER, authData, undefined)
+        FAKE_USER, '', authData)
     );
 
     expect(result).toEqual(expectedState);
