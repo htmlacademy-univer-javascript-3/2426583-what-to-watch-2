@@ -304,7 +304,7 @@ describe('Film process slice', () => {
     const expectedIsFilmsDataLoadingState = false;
 
     const result = filmProcessSlice.reducer(initialState, getPromoFilmAction.fulfilled(
-      FAKE_PROMO_FILM, undefined, ''));
+      FAKE_PROMO_FILM, '', ''));
 
     expect(result.promoFilm).toEqual(expectedPromoFilmState);
     expect(result.isFilmsDataLoading).toBe(expectedIsFilmsDataLoadingState);
