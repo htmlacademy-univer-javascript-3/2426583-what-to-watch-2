@@ -94,12 +94,12 @@ describe('Film process slice', () => {
       similarFilms: getFakeSimilarFilms(FAKE_FULL_FILMS[0].genre),
       promoFilm: null
     };
-    const expectedFilmsState = [];
+    const expectedFilmsStateLength = 0;
     const expectedIsFilmsDataLoadingState = true;
 
     const result = filmProcessSlice.reducer(initialState, getFilmsAction.pending);
 
-    expect(result.films).toEqual(expectedFilmsState);
+    expect(result.films.length).toBe(expectedFilmsStateLength);
     expect(result.isFilmsDataLoading).toEqual(expectedIsFilmsDataLoadingState);
   });
 
@@ -139,12 +139,12 @@ describe('Film process slice', () => {
       similarFilms: getFakeSimilarFilms(FAKE_FULL_FILMS[0].genre),
       promoFilm: null
     };
-    const expectedFilmsState = [];
+    const expectedFilmsStateLength = 0;
     const expectedIsFilmsDataLoadingState = false;
 
     const result = filmProcessSlice.reducer(initialState, getFilmsAction.rejected);
 
-    expect(result.films).toEqual(expectedFilmsState);
+    expect(result.films.length).toBe(expectedFilmsStateLength);
     expect(result.isFilmsDataLoading).toBe(expectedIsFilmsDataLoadingState);
   });
 
@@ -219,12 +219,12 @@ describe('Film process slice', () => {
       similarFilms: getFakeSimilarFilms(FAKE_FULL_FILMS[0].genre),
       promoFilm: null
     };
-    const expectedSimilarFilmsState = [];
+    const expectedSimilarFilmsStateLength = [];
     const expectedIsFilmsDataLoadingState = true;
 
     const result = filmProcessSlice.reducer(initialState, getSimilarFilmsAction.pending);
 
-    expect(result.similarFilms).toEqual(expectedSimilarFilmsState);
+    expect(result.similarFilms.length).toBe(expectedSimilarFilmsStateLength);
     expect(result.isFilmsDataLoading).toBe(expectedIsFilmsDataLoadingState);
   });
 
@@ -260,12 +260,12 @@ describe('Film process slice', () => {
       similarFilms: getFakeSimilarFilms(FAKE_FULL_FILMS[0].genre),
       promoFilm: null
     };
-    const expectedSimilarFilmsState = [];
+    const expectedSimilarFilmsStateLength = [];
     const expectedIsFilmsDataLoadingState = false;
 
     const result = filmProcessSlice.reducer(initialState, getSimilarFilmsAction.rejected);
 
-    expect(result.similarFilms).toEqual(expectedSimilarFilmsState);
+    expect(result.similarFilms.length).toEqual(expectedSimilarFilmsStateLength);
     expect(result.isFilmsDataLoading).toBe(expectedIsFilmsDataLoadingState);
   });
 
