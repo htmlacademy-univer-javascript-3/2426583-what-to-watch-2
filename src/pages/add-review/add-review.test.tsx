@@ -4,11 +4,11 @@ import userEvent from '@testing-library/user-event';
 import {createMemoryHistory} from 'history';
 import {withHistory, withStore} from '../../utils/mock-component';
 import {
-  FAKE_COMMENT, FAKE_FILMS, FAKE_FILMS_GENRES,
-  FAKE_FULL_FILMS, getFakeSimilarFilms,
+  FAKE_FILMS, FAKE_FILMS_GENRES,
+  FAKE_FULL_FILMS, FAKE_PROMO_FILM, getFakeSimilarFilms,
   makeFakeStore
 } from '../../utils/mocks';
-import {AppRoute, AuthorizationStatus, GENRE_FOR_ALL_FILMS} from '../../const';
+import {AppRoute, AuthorizationStatus, GENRE_FOR_ALL_FILMS, NameSpace} from '../../const';
 import {AddReview} from './add-review';
 describe('Component: Add review', () => {
   const mockHistory = createMemoryHistory();
@@ -47,10 +47,9 @@ describe('Component: Add review', () => {
   });
 
   it('should render 404 page when film-page ID is not available', async () => {
-    const fakeStore = {
-      COMMENT: { comments: [FAKE_COMMENT] },
-      FAVORITE: { favoriteFilms: FAKE_FILMS },
-      FILM: {
+    const expectedText = 'Page not found';
+    const {withStoreComponent} = withStore(<AddReview/>, makeFakeStore({
+      [NameSpace.Film]: {
         isFilmsDataLoading: false,
         genre: GENRE_FOR_ALL_FILMS,
         filmsByGenre: FAKE_FILMS,
@@ -58,15 +57,13 @@ describe('Component: Add review', () => {
         genres: FAKE_FILMS_GENRES,
         film: null,
         similarFilms: getFakeSimilarFilms(FAKE_FULL_FILMS[0].genre),
-        promoFilm: FAKE_FILMS[0]
+        promoFilm: FAKE_PROMO_FILM
       },
-      USER: {
+      [NameSpace.User]: {
         authorizationStatus: AuthorizationStatus.NoAuth,
         user: null
       }
-    };
-    const expectedText = 'Page not found';
-    const {withStoreComponent} = withStore(<AddReview/>, fakeStore);
+    }));
     const preparedComponent = withHistory(withStoreComponent);
 
     render(preparedComponent);

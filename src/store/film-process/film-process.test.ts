@@ -120,7 +120,7 @@ describe('Film process slice', () => {
     const expectedIsFilmsDataLoadingState = false;
 
     const result = filmProcessSlice.reducer(initialState, getFilmsAction.fulfilled(
-      FAKE_FILMS, '', ''));
+      FAKE_FILMS, '', undefined));
 
     expect(result.films).toEqual(expectedFilmsState);
     expect(result.genres).toEqual(expectedGenres);
@@ -300,11 +300,11 @@ describe('Film process slice', () => {
       similarFilms: getFakeSimilarFilms(FAKE_FULL_FILMS[0].genre),
       promoFilm: null
     };
-    const expectedPromoFilmState = FAKE_FILMS[0];
+    const expectedPromoFilmState = FAKE_PROMO_FILM;
     const expectedIsFilmsDataLoadingState = false;
 
     const result = filmProcessSlice.reducer(initialState, getPromoFilmAction.fulfilled(
-      FAKE_FILMS[0], '', ''));
+      FAKE_PROMO_FILM, '', ''));
 
     expect(result.promoFilm).toEqual(expectedPromoFilmState);
     expect(result.isFilmsDataLoading).toBe(expectedIsFilmsDataLoadingState);

@@ -35,18 +35,6 @@ export type FullFilm = {
   isFavorite: boolean;
 }
 
-export type FilmRating = {
-  score: number;
-  level: string;
-  count: number;
-}
-
-export type FilmDescription = {
-  info: string;
-  director: string;
-  starring: string[];
-}
-
 export type UserReview = {
   id: number;
   comment: string;

@@ -1,6 +1,6 @@
 import {internet, random} from 'faker';
 import {expect} from 'vitest';
-import {UserData} from '../../models/user';
+import {AuthData, UserData} from '../../models/user';
 import {UserProcess} from '../../models/state';
 import {AuthorizationStatus} from '../../const';
 import {getToken} from '../../services/token';
@@ -89,11 +89,15 @@ describe('User process slice', () => {
       authorizationStatus: AuthorizationStatus.Auth,
       user: FAKE_USER
     };
+    const authData: AuthData = {
+      login: internet.email(),
+      password: internet.password(10)
+    };
 
     const result = userProcessSlice.reducer(
       undefined,
       loginAction.fulfilled(
-        FAKE_USER, '', undefined)
+        FAKE_USER, authData, undefined)
     );
 
     expect(result).toEqual(expectedState);
