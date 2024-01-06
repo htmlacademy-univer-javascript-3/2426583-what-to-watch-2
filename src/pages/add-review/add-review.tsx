@@ -1,5 +1,4 @@
 import {Link} from 'react-router-dom';
-import React from 'react';
 import {FullFilm} from '../../models/models';
 import {AppRoute} from '../../const';
 import {ReviewForm} from '../../components/review-form/review-form';

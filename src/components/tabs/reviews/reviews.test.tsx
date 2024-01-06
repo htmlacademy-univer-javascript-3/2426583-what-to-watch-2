@@ -15,7 +15,7 @@ describe('Reviews Component', () => {
     const reviews = [FAKE_COMMENT];
     const expectedCount = reviews.length;
     const reviewTestId = 'review';
-    const withHistoryComponent = withHistory(<Reviews reviews={reviews}/>, mockHistory);
+    const withHistoryComponent = withHistory(<Reviews/>, mockHistory);
     const {withStoreComponent} = withStore(withHistoryComponent, makeFakeStore());
 
     render(withStoreComponent);

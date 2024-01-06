@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import React from 'react';
 import {withHistory, withStore} from '../../utils/mock-component';
 import {makeFakeStore} from '../../utils/mocks';
 import {createMemoryHistory, MemoryHistory} from 'history';

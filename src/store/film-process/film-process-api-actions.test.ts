@@ -80,7 +80,7 @@ describe('Film process async actions', () => {
     it('should dispatch "getFilmsAction.pending", "getFilmsAction.rejected" when server response 400', async () => {
       mockAxiosAdapter.onGet(`${APIRoute.Films}/${filmId}`).reply(400);
 
-      await store.dispatch(getFilmAction());
+      await store.dispatch(getFilmAction(filmId));
       const actions = extractActionsTypes(store.getActions());
 
       expect(actions).toEqual([
