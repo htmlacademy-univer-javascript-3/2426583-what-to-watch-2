@@ -8,8 +8,9 @@ describe('Tabs Component', () => {
     const detailsTab = Tab.details;
     const reviewsTab = Tab.reviews;
     const tabValueTestId = 'tab-value';
+    const onTabSelected = vi.fn();
 
-    render(<Tabs selectedTab={Tab.overview}/>);
+    render(<Tabs selectedTab={Tab.overview} onTabSelected={onTabSelected}/>);
 
     expect(screen.getByText(overviewTab)).toBeInTheDocument();
     expect(screen.getByText(detailsTab)).toBeInTheDocument();

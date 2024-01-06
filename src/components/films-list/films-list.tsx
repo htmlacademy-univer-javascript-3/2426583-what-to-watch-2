@@ -7,14 +7,14 @@ type FilmsListProps = {
 }
 
 export function FilmsList({films}: FilmsListProps): JSX.Element {
-  const [activeFilmId, setActiveFilmId] = useState<number>(-1);
+  const [activeFilmId, setActiveFilmId] = useState<string>('');
 
   const handleMouseEnter = useCallback((film: Film) => {
     setActiveFilmId(film.id);
   }, []);
 
   const handleMouseLeave = useCallback(() => {
-    setActiveFilmId(-1);
+    setActiveFilmId('');
   }, []);
 
   return (

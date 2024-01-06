@@ -3,7 +3,7 @@ import './loading-screen.css';
 
 export function LoadingScreen(): JSX.Element {
   return (
-    <section className='film-card film-card--full'>
+    <section className='film-card film-card--full' data-testid='spinnerElement'>
       <TailSpin
         height="80"
         width="80"
@@ -12,6 +12,7 @@ export function LoadingScreen(): JSX.Element {
         radius="1"
         wrapperClass="preloader"
         visible
+        data-testid='spinnerElement'
       />
     </section>
   );

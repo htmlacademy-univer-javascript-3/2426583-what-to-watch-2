@@ -40,16 +40,17 @@ export function Main(): JSX.Element {
 
   return (
     <div>
-      <TailSpin
-        height="80"
-        width="80"
-        color="#dfcf77"
-        ariaLabel="tail-spin-loading"
-        radius="1"
-        wrapperStyle={{'position': 'absolute', 'zIndex' : '1000', 'top': '50%', 'left': '50%', 'margin-left': '-48px', 'margin-top': '-48px'}}
-        wrapperClass=""
-        visible={isFilmsDataLoading}
-      />
+      <div data-testid='spinnerElement'>
+        <TailSpin
+          height="80"
+          width="80"
+          color="#dfcf77"
+          ariaLabel="tail-spin-loading"
+          radius="1"
+          wrapperClass="preloader"
+          visible={isFilmsDataLoading}
+        />
+      </div>
       <section className='film-card'>
         <div className='film-card__bg'>
           <img src={promoFilm?.backgroundImage} alt={promoFilm?.name}/>
@@ -57,19 +58,19 @@ export function Main(): JSX.Element {
 
         <h1 className='visually-hidden'>WTW</h1>
 
-        <Header customClassName={'film-card__head'}/>
+        <Header customClassName={'film-page-card__head'}/>
 
-        <div className='film-card__wrap'>
+        <div className='film-card__wrap' data-testid='filmCardMainElement'>
           <div className='film-card__info'>
             <div className='film-card__poster'>
               <img src={promoFilm?.posterImage} alt={promoFilm?.name}/>
             </div>
 
             <div className='film-card__desc'>
-              <h2 className='film-card__title'>{promoFilm?.name}</h2>
+              <h2 className='film-card__title' data-testid='titleElement'>{promoFilm?.name}</h2>
               <p className='film-card__meta'>
-                <span className='film-card__genre'>{promoFilm?.genre}</span>
-                <span className='film-card__year'>{promoFilm?.released}</span>
+                <span className='film-card__genre' data-testid='cardGenreElement'>{promoFilm?.genre}</span>
+                <span className='film-card__year' data-testid='yearElement'>{promoFilm?.released}</span>
               </p>
 
               { promoFilm && <FilmCardButtons filmId={promoFilm?.id}></FilmCardButtons>}

@@ -15,7 +15,7 @@ import {getFilm, getIsFilmsDataLoading, getSimilarFilms} from '../../store/film-
 import {FilmCardButtons} from '../../components/film-card-buttons/film-card-buttons';
 import {Tabs} from '../../components/tabs/tabs';
 import {LoadingScreen} from '../loading-screen/loading-screen';
-import './film.css';
+import './film-page.css';
 
 const getComponentBySelectedTab = (selectedTab: Tab, film: FullFilm) => {
   switch (selectedTab) {
@@ -62,19 +62,19 @@ export function FilmPage(): JSX.Element {
 
             <h1 className='visually-hidden'>WTW</h1>
 
-            <Header customClassName={'film-card__head'}/>
+            <Header customClassName={'film-page-card__head'}/>
 
-            <div className='film-card__wrap'>
+            <div className='film-card__wrap' data-testid='filmCardElement'>
               <div className='film-card__desc'>
-                <h2 className='film-card__title'>{film.name}</h2>
+                <h2 className='film-card__title' data-testid='titleElement'>{film.name}</h2>
                 <p className='film-card__meta'>
-                  <span className='film-card__genre'>{film.genre}</span>
-                  <span className='film-card__year'>{film.released}</span>
+                  <span className='film-card__genre' data-testid='genreElement'>{film.genre}</span>
+                  <span className='film-card__year' data-testid='yearElement'>{film.released}</span>
                 </p>
 
                 <FilmCardButtons filmId={film.id}>
                   {isAuth ?
-                    <Link to={`${AppRoute.Film}/${film.id}${AppRoute.AddReview}`} className='btn film-card__button'>Add
+                    <Link to={`${AppRoute.Film}/${film.id}${AppRoute.AddReview}`} className='btn film-card__button' data-testid='linkToReviewElement'>Add
                       review
                     </Link> : null}
                 </FilmCardButtons>

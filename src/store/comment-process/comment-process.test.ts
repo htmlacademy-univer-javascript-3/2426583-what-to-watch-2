@@ -34,7 +34,7 @@ describe('Comment process slice', () => {
     const result = commentProcessSlice.reducer(
       undefined,
       getFilmCommentsAction.fulfilled(
-        [FAKE_COMMENT], '', undefined)
+        [FAKE_COMMENT], '',undefined)
     );
 
     expect(result).toEqual(expectedState);

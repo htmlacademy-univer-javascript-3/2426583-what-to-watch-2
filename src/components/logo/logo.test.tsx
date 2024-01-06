@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import {BrowserRouter} from 'react-router-dom';
+import {withHistory} from '../../utils/mock-component';
 import {Logo} from './logo';
 
 describe('Component: Logo', () => {
@@ -8,7 +8,7 @@ describe('Component: Logo', () => {
     const secondLetter = 'T';
     const numberOfLetterW = 2;
 
-    render(<BrowserRouter><Logo/></BrowserRouter>);
+    render(withHistory(<Logo/>));
 
     expect(screen.getAllByText(firstLetter).length).toBe(numberOfLetterW);
     expect(screen.getByText(secondLetter)).toBeInTheDocument();

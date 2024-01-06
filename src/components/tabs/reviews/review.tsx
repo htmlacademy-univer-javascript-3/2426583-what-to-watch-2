@@ -6,7 +6,7 @@ type ReviewProps = {
 }
 export function Review({review}: ReviewProps): JSX.Element {
   return (
-    <div className="review">
+    <div className="review" data-testid="review">
       <blockquote className="review__quote">
         <p className="review__text" data-testid="text">{review.comment}</p>
 

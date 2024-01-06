@@ -1,14 +1,15 @@
 import {SyntheticEvent, useEffect, useRef, useState} from 'react';
+import {Link} from 'react-router-dom';
 import {FullFilm} from '../../models/models';
 import {useLoadFilmPlayer} from '../../hooks/use-load-film-player';
 import {useAppSelector} from '../../hooks';
 import {AppRoute} from '../../const';
+import {Icon} from '../../components/icon/icon';
 import {getFilm, getIsFilmsDataLoading} from '../../store/film-process/film-process.selectors';
 import {LoadingScreen} from '../loading-screen/loading-screen';
 import {formatDuration} from './player.utils';
-import {Link} from 'react-router-dom';
 
-const TIMEOUT_SEC = 1000;
+const START_VIDEO_TIMEOUT = 1000;
 
 export function Player(): JSX.Element {
   const film: FullFilm | null = useAppSelector(getFilm);
@@ -41,7 +42,7 @@ export function Player(): JSX.Element {
     setModalTimeout(setTimeout(() => {
       videoRef.current?.play();
       setIsPlaying(true);
-    }, TIMEOUT_SEC));
+    }, START_VIDEO_TIMEOUT));
   };
 
   const handlePlayIconClick = () => {
@@ -70,9 +71,10 @@ export function Player(): JSX.Element {
         className="player__video"
         poster={film?.posterImage}
         onTimeUpdate={(event) => updateTimeLeft(event)}
+        data-testid='videoElement'
       >
       </video>
-      {film && <Link className="player__exit" to={`${AppRoute.Film}/${film?.id}`}>Exit</Link>}
+      {film && <Link className="player__exit" to={`${AppRoute.Film}/${film?.id}`} data-testid='exitButton'>Exit</Link>}
 
       <div className="player__controls">
         <div className="player__controls-row">
@@ -84,17 +86,13 @@ export function Player(): JSX.Element {
         </div>
 
         <div className="player__controls-row">
-          <button type="button" className="player__play" onClick={handlePlayIconClick}>
-            <svg viewBox="0 0 19 19" width="19" height="19">
-              <use xlinkHref={isPlaying ? '#pause' : '#play-s'}></use>
-            </svg>
+          <button type="button" className="player__play" onClick={handlePlayIconClick} data-testid={isPlaying ? 'pauseButton' : 'playButton'}>
+            <Icon width={19} height={19} xlinkHref={isPlaying ? '#pause' : '#play-s'}/>
             <span>{isPlaying ? 'Pause' : 'Play'}</span>
           </button>
           <div className="player__name">{film?.name}</div>
-          <button type="button" className="player__full-screen" onClick={handleFullscreenIconClick}>
-            <svg viewBox="0 0 27 27" width="27" height="27">
-              <use xlinkHref="#full-screen"></use>
-            </svg>
+          <button type="button" className="player__full-screen" onClick={handleFullscreenIconClick} data-testid='fullScreenButton'>
+            <Icon width={27} height={27} xlinkHref="#full-screen"/>
             <span>Full screen</span>
           </button>
         </div>

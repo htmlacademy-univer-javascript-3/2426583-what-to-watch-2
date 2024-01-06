@@ -37,11 +37,11 @@ export function Login(): JSX.Element {
         <form action='' className='sign-in__form' onSubmit={handleSubmit}>
           <div className='sign-in__fields'>
             <div className='sign-in__field'>
-              <input className='sign-in__input' type='email' placeholder='Email address' name='login' id='user-email' onChange={handleLoginChange}/>
+              <input className='sign-in__input' type='email' placeholder='Email address' name='login' id='user-email' data-testid='loginElement' onChange={handleLoginChange}/>
               <label className='sign-in__label visually-hidden' htmlFor='user-email'>Email address</label>
             </div>
             <div className='sign-in__field'>
-              <input className='sign-in__input' type='password' placeholder='Password' name='password' id='user-password' onChange={handlePasswordChange}/>
+              <input className='sign-in__input' type='password' placeholder='Password' name='password' id='user-password' data-testid='passwordElement' onChange={handlePasswordChange}/>
               <label className='sign-in__label visually-hidden' htmlFor='user-password'>Password</label>
             </div>
           </div>

@@ -148,7 +148,7 @@ describe('Film process slice', () => {
     expect(result.isFilmsDataLoading).toBe(expectedIsFilmsDataLoadingState);
   });
 
-  it('should set "isFilmsDataLoading" to "true", "film" to "null" with "getFilmsAction.pending"', () => {
+  it('should set "isFilmsDataLoading" to "true", "film-page" to "null" with "getFilmsAction.pending"', () => {
     const initialState: FilmProcess = {
       isFilmsDataLoading: false,
       genre: FAKE_FULL_FILMS[0].genre,
@@ -168,7 +168,7 @@ describe('Film process slice', () => {
     expect(result.isFilmsDataLoading).toBe(expectedIsFilmsDataLoadingState);
   });
 
-  it('should set "isFilmsDataLoading" to "false" and set "film" with "getFilmsAction.fulfilled"', () => {
+  it('should set "isFilmsDataLoading" to "false" and set "film-page" with "getFilmsAction.fulfilled"', () => {
     const initialState: FilmProcess = {
       isFilmsDataLoading: true,
       genre: FAKE_FULL_FILMS[0].genre,
@@ -189,7 +189,7 @@ describe('Film process slice', () => {
     expect(result.isFilmsDataLoading).toBe(expectedIsFilmsDataLoadingState);
   });
 
-  it('should set "isFilmsDataLoading" to "false", "film" to "null" with "getFilmsAction.rejected"', () => {
+  it('should set "isFilmsDataLoading" to "false", "film-page" to "null" with "getFilmsAction.rejected"', () => {
     const initialState: FilmProcess = {
       isFilmsDataLoading: true,
       genre: FAKE_FULL_FILMS[0].genre,
