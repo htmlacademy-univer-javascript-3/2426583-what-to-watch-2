@@ -20,7 +20,7 @@ type ReviewFormProps = {
 export function ReviewForm({filmId} :ReviewFormProps): JSX.Element {
   const [review, setReview] = useState(defaultReview);
   const dispatch = useAppDispatch();
-  const isDisabled = review.rating === null || review.comment.length < MIN_LEN_REVIEW || review.comment.length > MAX_LEN_REVIEW;
+  const isDisabled = review.rating === 0 || review.comment.length < MIN_LEN_REVIEW || review.comment.length > MAX_LEN_REVIEW;
   function handleRatingChange(evt: ChangeEvent<HTMLInputElement>) {
     setReview({
       ...review,

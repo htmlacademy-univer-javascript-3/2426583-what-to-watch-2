@@ -12,11 +12,17 @@ export function VideoPlayer({poster, src}: VideoPlayerProps): JSX.Element {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
-    setTimeout(() => {
-      if (videoRef.current) {
-        videoRef.current.play();
-      }
-    }, START_VIDEO_TIMEOUT);
+    let isMounted = true;
+    if (isMounted) {
+      setTimeout(() => {
+        if (videoRef.current) {
+          videoRef.current.play();
+        }
+      }, START_VIDEO_TIMEOUT);
+    }
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (

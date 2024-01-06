@@ -19,17 +19,17 @@ import './film-page.css';
 
 const getComponentBySelectedTab = (selectedTab: Tab, film: FullFilm) => {
   switch (selectedTab) {
-    case Tab.overview:
+    case Tab.Overview:
       return <Overview film={film}></Overview>;
-    case Tab.details:
+    case Tab.Details:
       return <Details film={film}></Details>;
-    case Tab.reviews:
+    case Tab.Reviews:
       return <Reviews/>;
   }
 };
 
 export function FilmPage(): JSX.Element {
-  const [selectedTab, setSelectedTab] = useState(Tab.overview);
+  const [selectedTab, setSelectedTab] = useState(Tab.Overview);
   const [moreLikeThisFilms, setMoreLikeThisFilms] = useState<Film[]>([]);
 
   const isFilmLoading = useAppSelector(getIsFilmsDataLoading);
@@ -46,8 +46,14 @@ export function FilmPage(): JSX.Element {
   }, []);
 
   useEffect(() => {
-    const sameGenreFilms = similarFilms.filter((filteredFilm: Film) => filteredFilm.genre === film?.genre).slice(0, 4);
-    setMoreLikeThisFilms(sameGenreFilms);
+    let isMounted = true;
+    if (isMounted) {
+      const sameGenreFilms = similarFilms.filter((filteredFilm: Film) => filteredFilm.genre === film?.genre).slice(0, 4);
+      setMoreLikeThisFilms(sameGenreFilms);
+    }
+    return () => {
+      isMounted = false;
+    };
   }, [similarFilms, film]);
 
   return (

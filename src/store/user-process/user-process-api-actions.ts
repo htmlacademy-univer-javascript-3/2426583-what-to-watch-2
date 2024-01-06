@@ -27,7 +27,7 @@ export const checkAuthAction = createAsyncThunk<UserData, undefined, {
   state: State;
   extra: AxiosInstance;
 }>(
-  'checkAuth',
+  'user/checkAuth',
   async (_arg, { extra: api}) => {
     const {data: user} = await api.get<UserData>(APIRoute.Login);
     return user;
@@ -43,6 +43,6 @@ export const logoutAction = createAsyncThunk<void, undefined, {
   async (_arg, {dispatch, extra: api}) => {
     await api.delete<UserData>(APIRoute.Logout);
     dropToken();
-    dispatch(redirectToRoute(AppRoute.Login));
+    dispatch(redirectToRoute(AppRoute.Main));
   },
 );

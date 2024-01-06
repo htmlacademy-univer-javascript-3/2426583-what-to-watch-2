@@ -2,7 +2,7 @@ import {useCallback} from 'react';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {changeGenre, setFilmsByGenre} from '../../store/film-process/film-process.slice';
 import {getGenre, getGenres} from '../../store/film-process/film-process.selectors';
-import {GenreItem} from './genre-item';
+import {GenreItem} from './genre-item/genre-item';
 
 
 export function GenresList(): JSX.Element {

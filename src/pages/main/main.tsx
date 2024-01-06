@@ -27,11 +27,23 @@ export function Main(): JSX.Element {
   const isShowMoreButtonVisible = maxShownFilms < filmsByGenre.length;
 
   useEffect(() => {
-    dispatch(getPromoFilmAction());
+    let isMounted = true;
+    if (isMounted) {
+      dispatch(getPromoFilmAction());
+    }
+    return () => {
+      isMounted = false;
+    };
   }, [dispatch]);
 
   useEffect(() => {
-    setMaxShownFilms(COUNT_OF_FILMS_SHOWN);
+    let isMounted = true;
+    if (isMounted) {
+      setMaxShownFilms(COUNT_OF_FILMS_SHOWN);
+    }
+    return () => {
+      isMounted = false;
+    };
   }, [filmsByGenre]);
 
   const showMore = useCallback(() => {

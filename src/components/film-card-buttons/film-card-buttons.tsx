@@ -24,10 +24,16 @@ export function FilmCardButtons({children, filmId}: FilmCardButtonsProps): JSX.E
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getFavoriteFilmsAction());
-  }, [dispatch]);
+    let isMounted = true;
+    if (isMounted && isAuth) {
+      dispatch(getFavoriteFilmsAction());
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, [dispatch, isAuth]);
 
-  const changeFavoriteFilmsState = () => {
+  const handleFavoriteFilmsStateChange = () => {
     dispatch(changeFavoriteFilmStateAction({filmId: filmId, status: Number(!isFavoriteFilm)}));
   };
 
@@ -45,7 +51,7 @@ export function FilmCardButtons({children, filmId}: FilmCardButtonsProps): JSX.E
             <Icon width={18} height={14} xlinkHref='#in-list'/>}
           {!isFavoriteFilm &&
             <Icon width={19} height={20} xlinkHref='#add'/>}
-          <span onClick={changeFavoriteFilmsState}>My list</span>
+          <span onClick={handleFavoriteFilmsStateChange}>My list</span>
           <span className='film-card__count'>{favoriteFilms.length}</span>
         </button>}
       {children}

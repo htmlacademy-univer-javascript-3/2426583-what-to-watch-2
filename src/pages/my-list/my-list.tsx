@@ -11,7 +11,14 @@ export function MyList(): JSX.Element {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getFavoriteFilmsAction());
+    let isMounted = true;
+
+    if (isMounted) {
+      dispatch(getFavoriteFilmsAction());
+    }
+    return () => {
+      isMounted = false;
+    };
   }, [dispatch]);
 
   return (

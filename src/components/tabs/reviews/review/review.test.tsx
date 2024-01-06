@@ -1,5 +1,5 @@
 import {render, screen} from '@testing-library/react';
-import {FAKE_COMMENT} from '../../../utils/mocks';
+import {FAKE_COMMENT} from '../../../../utils/mocks';
 import {Review} from './review';
 
 describe('Review Component', () => {

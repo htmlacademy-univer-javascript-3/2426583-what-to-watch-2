@@ -27,12 +27,25 @@ export function Player(): JSX.Element {
     setProgress(event.currentTarget.currentTime / event.currentTarget.duration * 100);
   };
 
-  useEffect(() => () => clearTimeout(timeout), [timeout]);
+  useEffect(() => {
+    let isMounted = true;
+
+    if (isMounted) {
+      clearTimeout(timeout);
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, [timeout]);
 
   useEffect(() => {
-    if (videoRef.current?.paused === isPlaying) {
+    let isMounted = true;
+    if (isMounted && videoRef.current?.paused === isPlaying) {
       setIsPlaying(!isPlaying);
     }
+    return () => {
+      isMounted = false;
+    };
   }, [videoRef.current?.paused, isPlaying]);
 
   const handleMouseEnter = () => {

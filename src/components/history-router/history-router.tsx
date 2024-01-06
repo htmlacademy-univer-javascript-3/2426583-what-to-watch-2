@@ -18,7 +18,15 @@ function HistoryRouter({
     location: history.location,
   });
 
-  useLayoutEffect(() => history.listen(setState), [history]);
+  useLayoutEffect(() => {
+    let isMounted = true;
+    if (isMounted) {
+      history.listen(setState);
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, [history]);
 
   return (
     <Router

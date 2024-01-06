@@ -10,7 +10,8 @@ export function useLoadFilmPlayer(): void {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (id) {
+    let isMounted = true;
+    if (isMounted && id) {
       dispatch(getFilmAction(id))
         .then((res) => {
           if (res?.meta.requestStatus === ReduxStateStatus.Rejected) {
@@ -18,5 +19,8 @@ export function useLoadFilmPlayer(): void {
           }
         });
     }
+    return () => {
+      isMounted = false;
+    };
   }, [dispatch, navigate, id]);
 }
